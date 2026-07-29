@@ -16,7 +16,7 @@ st.set_page_config(page_title="Research Agent", page_icon="🔍")
 st.title("🔍 Research Agent — Day 04 Lab")
 
 with st.sidebar:
-    provider_name = st.selectbox("Provider", ["openrouter", "deepseek", "openai"], index=0)
+    provider_name = st.selectbox("Provider", ["deepseek", "openrouter", "openai"], index=0)
     provider = make_provider(provider_name)
     model = getattr(provider, "default_model", None)
     st.caption(f"Model: {model}")
@@ -40,12 +40,15 @@ if q:
     with st.chat_message("user"):
         st.markdown(q)
     with st.chat_message("assistant"):
-        with st.spinner("..."):
-            run = agent.run(st.session_state.msgs)
-        if run.text:
-            st.markdown(run.text)
-        if run.tool_calls:
-            for tc, tr in zip(run.tool_calls, run.tool_results):
-                with st.expander(f"🛠️ {tc.name}({json.dumps(tc.args, ensure_ascii=False)})"):
-                    st.json(tr.get("result", tr.get("error", "unknown")))
-        st.session_state.msgs.append({"role": "assistant", "content": run.text or "(no text)"})
+        try:
+            with st.spinner("..."):
+                run = agent.run(st.session_state.msgs)
+            if run.text:
+                st.markdown(run.text)
+            if run.tool_calls:
+                for tc, tr in zip(run.tool_calls, run.tool_results):
+                    with st.expander(f"🛠️ {tc.name}({json.dumps(tc.args, ensure_ascii=False)})"):
+                        st.json(tr.get("result", tr.get("error", "unknown")))
+            st.session_state.msgs.append({"role": "assistant", "content": run.text or "(no text)"})
+        except Exception as e:
+            st.error(f"Provider error: {e}. Try switching provider in sidebar.")
