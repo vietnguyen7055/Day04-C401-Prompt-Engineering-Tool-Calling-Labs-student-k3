@@ -1,0 +1,38 @@
+{
+  "version": "v3",
+  "provider": "deepseek",
+  "model": "deepseek-chat",
+  "prompt_hash": "27a65b83",
+  "tools_hash": "f40409bd",
+  "timestamp": "2026-07-29T10:33:45.674278",
+  "query": "Tóm tắt bài này: https://en.wikipedia.org/wiki/Artificial_intelligence",
+  "text": "Dưới đây là tóm tắt bài viết **\"Artificial intelligence\"** trên Wikipedia:\n\n**Định nghĩa:** Trí tuệ nhân tạo (AI) là khả năng của hệ thống máy tính thực hiện các tác vụ thường gắn với trí thông minh con người như học tập, suy luận, giải quyết vấn đề, nhận thức và ra quyết định. Đây là lĩnh vực nghiên cứu thuộc kỹ thuật, toán học và khoa học máy tính.\n\n**Nội dung chính của bài viết bao gồm:**\n\n- **Lịch sử:** Khởi nguồn từ những năm 1950, trải qua nhiều giai đoạn \"mùa đông AI\" và bùng nổ.\n- **Các phương pháp tiếp cận:** Học máy (Machine Learning), học sâu (Deep Learning), mạng nơ-ron nhân tạo, xử lý ngôn ngữ tự nhiên (NLP), thị giác máy tính.\n- **Ứng dụng:** Trợ lý ảo, xe tự lái, chẩn đoán y tế, tài chính, sáng tạo nội dung, v.v.\n- **Thách thức & rủi ro:** Đạo đức AI, thiên vị thuật toán, quyền riêng tư, tác động đến việc làm, an toàn AI.\n- **Tương lai:** Hướng tới AI tổng quát (AGI), các cuộc tranh luận về kiểm soát và quản trị AI.\n\nBạn có muốn tôi tìm hiểu thêm về một khía cạnh cụ thể nào của AI không?",
+  "tool_calls": [
+    {
+      "name": "fetch",
+      "args": {
+        "url": "https://en.wikipedia.org/wiki/Artificial_intelligence"
+      }
+    }
+  ],
+  "tool_results": [
+    {
+      "tool": "fetch",
+      "args": {
+        "url": "https://en.wikipedia.org/wiki/Artificial_intelligence"
+      },
+      "result": {
+        "tool": "read_url",
+        "url": "https://en.wikipedia.org/wiki/Artificial_intelligence",
+        "items": [
+          {
+            "title": "Artificial intelligence - Wikipedia",
+            "url": "https://en.wikipedia.org/wiki/Artificial_intelligence",
+            "source": "en.wikipedia.org",
+            "summary": "[Jump to content](https://en.wikipedia.org/wiki/Artificial_intelligence#bodyContent)\n\n[![Page semi-protected](https://upload.wikimedia.org/wikipedia/en/thumb/1/1b/Semi-protection-shackle.svg/20px-Semi-protection-shackle.svg.png)](https://en.wikipedia.org/wiki/Wikipedia:Protection_policy#semi \"This article is semi-protected.\")\n\nFrom Wikipedia, the free encyclopedia\n\nIntelligence of machines\n\n\"AI\" redirects here. For other uses, see [AI (disambiguation)](https://en.wikipedia.org/wiki/AI_(disambiguation) \"AI (disambiguation)\") and [Artificial intelligence (disambiguation)](https://en.wikipedia.org/wiki/Artificial_intelligence_(disambiguation) \"Artificial intelligence (disambiguation)\").\n\n**Artificial intelligence** ( **AI**) is the capability of [computational systems](https://en.wikipedia.org/wiki/Computer \"Computer\") to perform tasks typically associated with [human intelligence](https://en.wikipedia.org/wiki/Human_intelligence \"Human intelligence\"), such as [learning](https://en.wikipedia.org/wiki/Learning \"Learning\"), [reasoning](https://en.wikipedia.org/wiki/Reason \"Reason\"), [problem-solving](https://en.wikipedia.org/wiki/Problem-solving \"Problem-solving\"), [perception](https://en.wikipedia.org/wiki/Perception \"Perception\"), and [decision-making](https://en.wikipedia.org/wiki/Decision-making \"Decision-making\"). It is a [field of research](https://en.wikipedia.org/wiki/Field_of_research \"Field of research\") in [engineering](https://en.wikipedia.org/wiki/Engineering \"Engineering\"), [mathematics](https://en.wikipedia.org/wiki/Mathematics \"Mathematics\"), and [computer science](https://en.wikipedia.org/wiki/Computer_science \"Computer science\") that develops and studies methods and [software](https://en.wikipedia.org/wiki/Software \"Software\") that enable machines to perceive their environment and use [learning](https://en.wikipedia.org/wiki/Machine_learning \"Machine learning\") and [intelligence](https://en.wikipedia.org/wiki/Intelligence \"Intelligence\") to take actions that maximize their chances of achieving defined goals.[\\[1\\]](https://en.wikipedia.org/wiki/Artificial_intelligence#cite_note-FOOTNOTERussellNorvig20211%E2%80%934-1)\n\nHigh-profile [applications of AI](https://en.wikipedia.org/wiki/Applications_of_artificial_intelligence \"Applications of artificial intelligence\") include advanced [web search engines](https://en.wikipedia.org/wiki/Web_search_engine \"Web search engine\"), [chatbots](https://en.wikipedia.org/wiki/Chatbot \"Chatbot\"), [virtual assistants](https://en.wikipedia.org/wiki/Virtual_assistant \"Virtual assistant\"), [autonomous vehicles](https://en.wikipedia.org/wiki/Autonomous_vehicles \"Autonomous vehicles\"), and play and analysis in [strategy games](https://en.wikipedia.org/wiki/Strategy_game \"Strategy game\") (e.g., [chess](https://en.wikipedia.org/wiki/Chess \"Chess\") and [Go](https://en.wikipedia.org/wiki/Go_(game) \"Go (game)\")). Since the 2020s, [generative AI](https://en.wikipedia.org/wiki/Generative_AI \"Generative AI\") has become widely available to generate images, audio, and videos from text prompts.\n\nThe traditional goals of AI research include learning, [reasoning](https://en.wikipedia.org/wiki/Automated_reasoning \"Automated reasoning\"), [knowledge representation](https://en.wikipedia.org/wiki/Knowledge_representation \"Knowledge representation\"), [planning](https://en.wikipedia.org/wiki/Automated_planning_and_scheduling \"Automated planning and scheduling\"), [natural language processing](https://en.wikipedia.org/wiki/Natural_language_processing \"Natural language processing\"), and [perception](https://en.wikipedia.org/wiki/Machine_perception \"Machine perception\"), as well as support for [robotics](https://en.wikipedia.org/wiki/Robotics \"Robotics\").[\\[a\\]](https://en.wikipedia.org/wiki/Artificial_intelligence#cite_note-Problems_of_AI-2) To reach these goals, AI researchers use techniques including [state space search](https://en.wikipedia.org/wiki/State_space_search \"State space search\") and [mathematical "
+          }
+        ]
+      }
+    }
+  ]
+}

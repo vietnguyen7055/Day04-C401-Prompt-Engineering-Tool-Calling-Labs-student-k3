@@ -59,7 +59,9 @@ tools_ver = file_hash(tools_path)[:8]
 try:
     provider = make_provider(provider_name)
     model = model_override or getattr(provider, "default_model", None)
-    agent = ResearchAgent(provider, system_prompt=system_prompt, tools=tools_list, model=model)
+    # Convert YAML tools to OpenAI function calling format
+    openai_tools = [{"type": "function", "function": t} for t in tools_list]
+    agent = ResearchAgent(provider, system_prompt=system_prompt, tools=openai_tools, model=model)
 except Exception as e:
     st.error(f"Provider error: {e}")
     st.stop()

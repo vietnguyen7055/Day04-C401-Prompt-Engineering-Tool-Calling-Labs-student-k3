@@ -22,8 +22,13 @@ STEP 3: PICK THE RIGHT TOOL:
   - Web/news search → lookup(query=keyword)
     For "today/hôm nay" news: topic="news", timeframe="day"
     For "this week": timeframe="week"
+    BEFORE searching in Vietnamese, use translate to convert keywords to English.
   - Read specific URL → fetch(url=full_url)
+    After fetching long articles, use summarize to extract key points.
   - Format collected items → format(items=[...], template=...)
+  - Summarize long text → summarize(text=..., max_length=3)
+  - Translate VN→EN → translate(text=..., target="en")
+    Use before lookup/social_search when query is in Vietnamese.
 
 STEP 4: CAN MULTIPLE TOOLS RUN IN PARALLEL?
   If multiple independent searches needed → call all in one response.

@@ -1,0 +1,97 @@
+{
+  "version": "v3",
+  "provider": "deepseek",
+  "model": "deepseek-chat",
+  "prompt_hash": "27a65b83",
+  "tools_hash": "f40409bd",
+  "timestamp": "2026-07-29T10:26:25.670924",
+  "query": "Mọi người đang nói gì về GPT-5?",
+  "text": "Let me search for what people are saying about GPT-5 on social media.",
+  "tool_calls": [
+    {
+      "name": "social_search",
+      "args": {
+        "query": "GPT-5",
+        "search_type": "Latest",
+        "limit": 5
+      }
+    }
+  ],
+  "tool_results": [
+    {
+      "tool": "social_search",
+      "args": {
+        "query": "GPT-5",
+        "search_type": "Latest",
+        "limit": 5
+      },
+      "result": {
+        "tool": "search_tweets",
+        "query": "GPT-5",
+        "search_type": "Latest",
+        "items": [
+          {
+            "title": "🚨 𝟯𝗛𝗥𝗦 & 𝗟𝗔𝗦𝗧 𝗦𝗣𝗢𝗧! 𝗙𝗥𝗘𝗘 $𝟯𝟬𝗞 𝗧𝗜𝗠𝗘 𝗟𝗘𝗔𝗞 𝗕𝗟𝗨𝗘𝗣𝗥𝗜𝗡𝗧 + 𝗔𝗚𝗘𝗡𝗧 𝗢𝗦. 𝗚𝗢𝗡𝗘 𝗔𝗧 𝗠𝗜𝗗𝗡𝗜𝗚𝗛𝗧 𝗣𝗧 🚨 → https://t.co/Ppmk5h9rw3",
+            "summary": "🚨 𝟯𝗛𝗥𝗦 & 𝗟𝗔𝗦𝗧 𝗦𝗣𝗢𝗧! 𝗙𝗥𝗘𝗘 $𝟯𝟬𝗞 𝗧𝗜𝗠𝗘 𝗟𝗘𝗔𝗞 𝗕𝗟𝗨𝗘𝗣𝗥𝗜𝗡𝗧 + 𝗔𝗚𝗘𝗡𝗧 𝗢𝗦. 𝗚𝗢𝗡𝗘 𝗔𝗧 𝗠𝗜𝗗𝗡𝗜𝗚𝗛𝗧 𝗣𝗧 🚨 → https://t.co/Ppmk5h9rw3\n\n🚨 $𝟯𝟵𝟵 𝗙𝗢𝗥 𝗧𝗛𝗘 𝗬𝗘𝗔𝗥. 𝗥𝗘𝗖𝗟𝗔𝗜𝗠 𝟮 𝗛𝗢𝗨𝗥𝗦 𝗔 𝗪𝗘𝗘𝗞 𝗔𝗡𝗗 𝗜𝗧 𝗣𝗔𝗬𝗦 𝗙𝗢𝗥 𝗜𝗧𝗦𝗘𝗟𝗙 𝗕𝗬 𝗡𝗘𝗫𝗧 𝗠𝗢𝗡𝗧𝗛. 𝗗𝗢𝗨𝗕𝗟𝗘 𝗚𝗨𝗔𝗥𝗔𝗡𝗧𝗘𝗘: 𝟳-𝗗𝗔𝗬 𝗡𝗢-𝗤𝗨𝗘𝗦𝗧𝗜𝗢𝗡𝗦 + 𝟯𝟬-𝗗𝗔𝗬 𝗥𝗢𝗜. 𝗥𝗜𝗦𝗞'𝗦 𝗔𝗟𝗟 𝗠𝗜𝗡𝗘 🚨 → https://t.co/Ppmk5h9rw3\n\n🚨 𝗟𝗔𝗦𝗧 𝗦𝗣𝗢𝗧. 𝟯 𝗛𝗢𝗨𝗥𝗦. 𝗜𝗙 𝗬𝗢𝗨'𝗥𝗘 𝗥𝗘𝗔𝗗𝗜𝗡𝗚 𝗧𝗛𝗜𝗦 𝗜𝗧'𝗦 𝗦𝗧𝗜𝗟𝗟 𝗬𝗢𝗨𝗥𝗦 🚨 → https://t.co/Ppmk5h9rw3\n\n4 in.\n\nOne spot left.\n\n3 hours.\n\nLet's do the only math that matters before midnight.\n\n$399 for the year.\n\nThat's the whole cost.\n\nYou're leaking $28,600 a year at the survey average.\n\nReclaim just two hours a week, and the membership pays for itself by the end of next month.\n\nTwo hours.\n\nOut of eleven.\n\nAnd that's the conservative case.\n\nSome members save up to 20-40 hours a week.\n\nStill not sure?\n\nThat's what the double guarantee is for.\n\n7 days, no questions asked.\n\nJoin tonight, look at everything, and if it's not for you, full refund.\n\n30-day ROI guarantee on top.\n\nIf it doesn't pay for itself, the risk's all mine, not yours.\n\nSo the worst case is you get your money back.\n\nThe likely case is you stop paying yourself $50 an hour to sort an inbox.\n\nOne spot left.\n\nIf you're reading this, it's still yours.\n\n👉 Take the last spot → https://t.co/Ppmk5h9rw3\n\n🎯 𝗧𝗛𝗘 𝗙𝗥𝗘𝗘 𝗕𝗟𝗨𝗘𝗣𝗥𝗜𝗡𝗧:\n✅ Where your 11 hours actually go\n✅ The cost of each task, per month, in dollars\n✅ Which leak to plug first\n✅ Prompts that hand it to an agent tonight\n\n💎 𝗣𝗟𝗨𝗦 𝗧𝗛𝗘 𝗙𝗨𝗟𝗟 𝗙𝗢𝗨𝗡𝗗𝗘𝗥𝗦 𝗗𝗘𝗔𝗟, 𝗟𝗢𝗖𝗞𝗘𝗗 𝗙𝗢𝗥 𝗟𝗜𝗙𝗘:\n✅ The Agent OS ... same stack behind my 450K/month operation\n✅ 115+ Agency SOPs ... $25,000 value\n✅ Commercial License ... $5,000 value\n✅ $1,000 Goldie Agency credit (AI SEO service)\n✅ AI SEO Elite Circle (1 year) ... $997 value\n✅ Custom GPT Collection ... $8,000 value\n✅ Private Vlog and Podcast Archive ... $12,000 value\n✅ 189+ Thumbnails + Tweet Library + Ad Swipe File ... $25,500 value\n✅ 2 Bonus Memberships (partner and VA) ... $798 value\n✅ All Future Courses FREE ... $5,000+ value\n✅ Double guarantee: 7-day no-questions, 30-day ROI\n✅ Lifetime Price Lock at $399 ... Priceless\n\n📦 𝗣𝗟𝗨𝗦 𝗘𝗩𝗘𝗥𝗬𝗧𝗛𝗜𝗡𝗚 𝗜𝗡𝗦𝗜𝗗𝗘 𝗧𝗛𝗘 𝗕𝗢𝗔𝗥𝗗𝗥𝗢𝗢𝗠:\n✅ OpenClaw + Claude + Hermes courses\n✅ AI Avatar Clone ($600/day proven)\n✅ $5K High Ticket Formula\n✅ 105 Agency-Level Prompts\n✅ 1,000+ n8n automations\n\n👉 Daily Q&A + 5 live calls a week\n👉 4,000 members + 30+ new trainings weekly\n👉 $8K+ monthly giveaways\n\nLast spot.\n\n3 hours.\n\nIf you're reading this, it's still yours.\n\n👉 Take it before the 3 hours run out → https://t.co/Ppmk5h9rw3",
+            "url": "https://x.com/JulianGoldieSEO/status/2082305355196051468",
+            "source": "@JulianGoldieSEO",
+            "date": "Wed Jul 29 03:20:58 +0000 2026",
+            "metrics": {
+              "favorites": 0,
+              "retweets": 0,
+              "views": "638"
+            }
+          },
+          {
+            "title": "Less than 48 hours.",
+            "summary": "Less than 48 hours.\n\nHundreds of players.\n576+ matches played.\n\nAll from vibe coding.\n\nThis is where it get interesting. \n\nOpus 5 is orchestrating Qwen 3.8 Max and GPT-5.6 Sol in a loop to take the game to the next level\n\nI’m letting it run for the next 24 hours.\n\nLet’s see what it builds.",
+            "url": "https://x.com/luckeyfaraday/status/2082304833898373567",
+            "source": "@luckeyfaraday",
+            "date": "Wed Jul 29 03:18:54 +0000 2026",
+            "metrics": {
+              "favorites": 0,
+              "retweets": 0,
+              "views": "13"
+            }
+          },
+          {
+            "title": "receipts:",
+            "summary": "receipts:\n\ngpt-5.6: four-agent ultra, 91.9% on Terminal-Bench, internal AI research use, RSI Index rising from 41.7% to 57.9% and KernelGen from 29.3% to 61.1%:\n\nhttps://t.co/zia82FQz6h\n\ngpt-5.5 helped write serving heuristics that increased generation speed by over 20%:\n\nhttps://t.co/Oy9Nt3pACW\n\nthe current limit: gpt-5.6 remains below OpenAI’s “High” AI self-improvement threshold:\n\nhttps://t.co/uU0GyL6RE1\n\ncurrent agents can discover better training strategies but struggle to compound them reliably:\n\nhttps://t.co/ZtnALnqAml\n\nOpenAI has announced no official gpt-6 specifications. this is my forecast from the evidence.",
+            "url": "https://x.com/imjustnewatai/status/2082304444704682243",
+            "source": "@imjustnewatai",
+            "date": "Wed Jul 29 03:17:21 +0000 2026",
+            "metrics": {
+              "favorites": 0,
+              "retweets": 0,
+              "views": "54"
+            }
+          },
+          {
+            "title": "cuss abisin",
+            "summary": "cuss abisin\njual wts Chat GPT premium prem Plus &amp; Gemini\nChat GPT Plus SHARING 5u harian garansi\n- 1 hari (6k)\n- 2 hari (9k)\n- 3 hari (12k)\n- 4 hari (14k)\n- 5 hari (16k)\n- 7 hari (20k)\n\n- 1 bulan (25k) NO GARANSI\n\nGPT PRO❌\n\nGemini Plus + Gdrive 400 gb\n- 6b (20k) priv\n#zonauang",
+            "url": "https://x.com/echan_nct/status/2082303642405868026",
+            "source": "@echan_nct",
+            "date": "Wed Jul 29 03:14:10 +0000 2026",
+            "metrics": {
+              "favorites": 0,
+              "retweets": 0,
+              "views": "103"
+            }
+          },
+          {
+            "title": "https://t.co/IQPkjas5NA",
+            "summary": "https://t.co/IQPkjas5NA",
+            "url": "https://x.com/Khazix0918/status/2082303581764596051",
+            "source": "@Khazix0918",
+            "date": "Wed Jul 29 03:13:55 +0000 2026",
+            "metrics": {
+              "favorites": 11,
+              "retweets": 0,
+              "views": "821"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

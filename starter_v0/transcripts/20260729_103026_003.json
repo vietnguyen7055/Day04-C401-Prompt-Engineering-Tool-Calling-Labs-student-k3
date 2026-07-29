@@ -1,0 +1,75 @@
+{
+  "version": "v3",
+  "provider": "deepseek",
+  "model": "deepseek-chat",
+  "prompt_hash": "27a65b83",
+  "tools_hash": "f40409bd",
+  "timestamp": "2026-07-29T10:30:26.909937",
+  "query": "Tin tức AI hôm nay",
+  "text": "Dưới đây là tin tức AI nổi bật hôm nay:\n\n1. **\"Steven Spielberg’s A.I. Artificial Intelligence turns 25\"** – Bài viết trên *The Independent* nhân kỷ niệm 25 năm bộ phim, phân tích lý do tác phẩm vẫn gây ám ảnh đến ngày nay. *(independent.co.uk)*\n\n2. **\"This Healthcare Leader Just Made a Bet on Artificial Intelligence (AI): Time to Buy the Stock?\"** – Một lãnh đạo trong lĩnh vực chăm sóc sức khỏe vừa đặt cược vào AI — bài viết phân tích có nên mua cổ phiếu hay không. *(fool.com)*\n\nBạn muốn tôi đọc chi tiết bài nào không?",
+  "tool_calls": [
+    {
+      "name": "lookup",
+      "args": {
+        "query": "AI artificial intelligence news",
+        "topic": "news",
+        "timeframe": "day",
+        "max_results": 5
+      }
+    }
+  ],
+  "tool_results": [
+    {
+      "tool": "lookup",
+      "args": {
+        "query": "AI artificial intelligence news",
+        "topic": "news",
+        "timeframe": "day",
+        "max_results": 5
+      },
+      "result": {
+        "tool": "web_search",
+        "query": "AI artificial intelligence news",
+        "topic": "news",
+        "timeframe": "day",
+        "items": [
+          {
+            "title": "Steven Spielberg’s A.I. Artificial Intelligence turns 25. Here’s why the movie still feels unsettling today",
+            "url": "https://www.independent.co.uk/arts-entertainment/films/steven-spielberg-ai-artificial-intelligence-movie-b3023355.html",
+            "source": "independent.co.uk",
+            "summary": "News\n  + News\n  + Bulletin\n  + UK\n  + US\n  + World\n  + Global Aid\n  + UK Politics\n  + Money\n  + Brexit\n  + Health\n  + Business\n  + Science\n  + Space\n  + News Videos\n Premium\n  + Premium\n  + Politics Explained\n  + Editorials\n  + Voices\n  + Long Reads\n  + News Analysis\n  + Today’s Edition\n Sport\n  + Sport\n  + Football\n  + Formula 1\n  + Rugby Union\n  + Cricket\n  + Tennis\n  + Boxing\n  + UFC\n  + Horse Racing\n  + Cycling\n  + Golf\n  + Sport Videos\n Voices\n  + Voices\n  + Editorials\n  + Your Views [...] + Home & Garden\n  + Gadgets & Tech\n  + Fashion & Beauty\n  + Deals\n  + Food & Drink\n  + Kids\n  + Books\n  + Travel & Outdoors\n  + Sports & Fitness\n Travel\n  + Travel\n  + Hotel Reviews\n  + News & Advice\n  + Cruises\n  + UK\n  + Europe\n  + USA\n  + Asia\n  + Australia & New Zealand\n  + South America\n  + C. America & Caribbean\n  + Middle East [...] More\n\nDeals\n\n Travel Deals\n Fashion Deals\n Home & Garden Deals\n Tech Deals\n\nClimate\n\n News\n Climate 100\n Electric Vehicles\n Voices\n Sustainable Living\n Explained\n Climate Videos\n Solar Panels\n\nTV\n\n Documentaries\n ACFC\n Well Enough\n World of Trouble\n Travel Smart\n Drive Smart\n Money Smart\n Decomplicated\n On The Ground\n\n Indy100\n Today’s Edition\n Crosswords & Puzzles\n Most Commented\n Newsletters\n Ask Me Anything\n Virtual Events\n Betting Sites\n Casino Sites\n\n### Thank you for registering",
+            "score": 0.6762998
+          },
+          {
+            "title": "This Healthcare Leader Just Made a Bet on Artificial Intelligence (AI): Time to Buy the Stock?",
+            "url": "https://www.fool.com/investing/2026/07/28/this-healthcare-leader-just-made-a-bet-on-artifici",
+            "source": "fool.com",
+            "summary": "Bristol Myers has been using AI to improve the drug discovery and development process, which is typically slow and expensive. The company could launch medicines more quickly and at lower costs if its efforts are successful. To that end, Bristol Myers recently announced that it would build the most powerful AI factory in life sciences. The pharmaceutical leader is expanding its Nvidia partnership by deploying a next-generation DGX SuperPOD AI supercomputer to build a more powerful AI drug [...] Artificial intelligence (AI) is changing every industry, and even companies outside the technology sector are partnering with Nvidia (NVDA +0.29%), one of the leaders in AI, to capitalize on it. One such corporation in the pharmaceutical industry is Bristol Myers Squibb (BMY +1.69%), which recently announced an expanded collaboration with Nvidia. Let's see what this means for the drugmaker.\n\n## Doubling down on AI [...] powerful AI drug discovery platform. Bristol Myers has already started to see the benefits of its long-standing AI-related efforts, according to management, and this new investment could help further boost efficiency.",
+            "score": 0.44391435
+          },
+          {
+            "title": "Dakota Intelligence brings artificial intelligence solutions to businesses",
+            "url": "https://www.mitchellrepublic.com/news/local/dakota-intelligence-brings-artificial-intelligence-solutions-to-businesses",
+            "source": "mitchellrepublic.com",
+            "summary": "Education has become a significant part of the business.\n\nEarlier this summer, Johnson hosted an AI Lunch and Learn through the Mitchell Area Chamber of Commerce, drawing a full room of business leaders interested in practical applications. The presentation focused on practical uses of AI, data privacy and developing workplace policies before implementing new technology. [...] Johnson said the timing is especially important because the South Dakota Department of Labor and Regulation is accepting applications for its AI Adoption Workforce Funding program, which reimburses eligible employers for AI training through Aug. 7. Businesses choose their own trainer and can apply for reimbursement to help offset the cost of adopting AI in the workplace.\n\nADVERTISEMENT [...] Within a month of opening, Dakota Intelligence had secured customers ranging from agricultural operations to a tribal mental health program and other businesses looking to automate repetitive office tasks.\n\nThe company builds AI-powered phone receptionists, appointment booking systems, workflow automation and digital operations dashboards.\n\nTimmJohnson3jpg",
+            "score": 0.4330947
+          },
+          {
+            "title": "Blackburn demands dark money group take down AI attack ad | WPLN News",
+            "url": "https://wpln.org/post/blackburn-demands-dark-money-group-take-down-ai-attack-ad",
+            "source": "wpln.org",
+            "summary": "Share:\n\nU.S. Sen. Marsha Blackburn is threatening legal action against a dark money group for running an attack ad against her using artificial intelligence.\n\nIn the recent ad, the American Exceptionalism Institute PAC calls Blackburn “the queen pharma mama” in an AI-generated spoof of a pharmaceutical ad. The ad shows businessmen exchanging briefcases of money while a jingle sings, “Our pain-killing pills wouldn’t sell, so we paid Sen. Marsha Blackburn to pass our bill.”",
+            "score": 0.41905406
+          },
+          {
+            "title": "Tech employees call for US-backed global effort to manage ...",
+            "url": "https://www.reuters.com/legal/litigation/tech-employees-call-us-backed-global-effort-manage-risks-advanced-ai-2026-07-28",
+            "source": "reuters.com",
+            "summary": "Skip to main content\n\nExclusive news, data and analytics for financial market professionals Learn more about Refinitiv\n\n - More than 1,100 employees from leading tech firms on Tuesday urged the U.S. government to support ​an international effort to develop tools for managing the pace ‌of advanced AI development.\n\nThe statement comes as AI companies pursue increasingly powerful systems, raising concerns that developments could outpace existing safety, governance and oversight mechanisms. [...] \"Our own research on recursive self-improvement, published last month, points to the need for tools to deliberately ​pace the frontier ​of AI development ⁠so society can prepare,\" Anthropic said in an X post. \n   Last month, the Claude Code creator called on major ​AI labs to consider a coordinated pause in development, warning ​that advances ⁠in the technology could soon allow AI systems to improve themselves faster than society can manage the risks.",
+            "score": 0.38359568
+          }
+        ]
+      }
+    }
+  ]
+}

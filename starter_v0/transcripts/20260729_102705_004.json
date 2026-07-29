@@ -1,0 +1,12 @@
+{
+  "version": "v3",
+  "provider": "deepseek",
+  "model": "deepseek-chat",
+  "prompt_hash": "27a65b83",
+  "tools_hash": "f40409bd",
+  "timestamp": "2026-07-29T10:27:05.255608",
+  "query": "Tóm tắt bài này: https://openai.com/blog/gpt-5",
+  "text": "Let me fetch that article for you.",
+  "tool_calls": [],
+  "tool_results": []
+}
