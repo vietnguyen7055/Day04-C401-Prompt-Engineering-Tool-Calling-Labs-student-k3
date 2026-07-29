@@ -58,9 +58,10 @@ class ResearchAgent:
                 for i, c in enumerate(response.tool_calls)
             ]})
             for i, r in enumerate(results):
-                messages.append({"role": "tool", "tool_call_id": f"call_{i}", "content": str(r.get("result", r.get("error", "")))[:2000]})
+                content = str(r.get("result", r.get("error", "")))[:3000]  # cap to avoid token overflow
+                messages.append({"role": "tool", "tool_call_id": f"call_{i}", "content": content})
             try:
-                synthesis = self.provider.complete(messages, tools=None, model=self.model, temperature=0.3)
+                synthesis = self.provider.complete(messages, tools=None, model=self.model, temperature=0.0)
                 final_text = synthesis.text or final_text
             except Exception:
                 pass  # synthesis is best-effort; keep original text on failure
