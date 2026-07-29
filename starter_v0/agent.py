@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import json
 from dataclasses import dataclass, field
 from typing import Any
 
@@ -50,17 +49,14 @@ class ResearchAgent:
                 result = {"error": type(exc).__name__, "message": str(exc)}
             results.append({"tool": call.name, "args": call.args, "result": result})
 
-        # Synthesize tool results into a natural language answer
+        # Best-effort synthesis: summarize tool results
         final_text = response.text
         if response.tool_calls and results:
-            messages.append({"role": "assistant", "content": response.text or ""})
-            for r in results:
-                content = str(r.get("result", r.get("error", "")))[:2000]
-                messages.append({"role": "user", "content": f"Tool '{r['tool']}' returned:\n{content}\n\nNow give me a natural language summary based on this data."})
-            try:
-                synthesis = self.provider.complete(messages, tools=None, model=self.model, temperature=0.0)
-                final_text = synthesis.text or final_text
-            except Exception:
-                pass  # synthesis is best-effort
+            tool_summary = "\n".join(
+                f"Tool '{r['tool']}': {str(r.get('result', r.get('error', '')))[:500]}"
+                for r in results if not r.get("error")
+            )
+            if tool_summary:
+                final_text = final_text + "\n\n" + tool_summary if final_text else tool_summary
 
         return AgentRun(text=final_text, tool_calls=response.tool_calls, tool_results=results)
