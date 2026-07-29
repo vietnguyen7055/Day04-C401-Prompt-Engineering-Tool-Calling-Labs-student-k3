@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 from dataclasses import dataclass, field
 from typing import Any
 
@@ -48,4 +49,20 @@ class ResearchAgent:
             except Exception as exc:  # keep eval robust; failures are evidence
                 result = {"error": type(exc).__name__, "message": str(exc)}
             results.append({"tool": call.name, "args": call.args, "result": result})
-        return AgentRun(text=response.text, tool_calls=response.tool_calls, tool_results=results)
+
+        # Synthesize tool results into a natural language answer
+        final_text = response.text
+        if response.tool_calls and results:
+            messages.append({"role": "assistant", "content": None, "tool_calls": [
+                {"id": f"call_{i}", "type": "function", "function": {"name": c.name, "arguments": json.dumps(c.args)}}
+                for i, c in enumerate(response.tool_calls)
+            ]})
+            for i, r in enumerate(results):
+                messages.append({"role": "tool", "tool_call_id": f"call_{i}", "content": str(r.get("result", r.get("error", "")))[:2000]})
+            try:
+                synthesis = self.provider.complete(messages, tools=None, model=self.model, temperature=0.3)
+                final_text = synthesis.text or final_text
+            except Exception:
+                pass  # synthesis is best-effort; keep original text on failure
+
+        return AgentRun(text=final_text, tool_calls=response.tool_calls, tool_results=results)
