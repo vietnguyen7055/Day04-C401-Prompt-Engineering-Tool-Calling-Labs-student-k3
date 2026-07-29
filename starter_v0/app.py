@@ -16,7 +16,7 @@ st.set_page_config(page_title="Research Agent", page_icon="🔍")
 st.title("🔍 Research Agent — Day 04 Lab")
 
 with st.sidebar:
-    provider_name = st.selectbox("Provider", ["deepseek", "openrouter", "openai"], index=0)
+    provider_name = st.selectbox("Provider", ["openrouter", "deepseek", "openai"], index=0)
     provider = make_provider(provider_name)
     model = getattr(provider, "default_model", None)
     st.caption(f"Model: {model}")
