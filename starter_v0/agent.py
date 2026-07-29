@@ -53,17 +53,14 @@ class ResearchAgent:
         # Synthesize tool results into a natural language answer
         final_text = response.text
         if response.tool_calls and results:
-            messages.append({"role": "assistant", "content": None, "tool_calls": [
-                {"id": f"call_{i}", "type": "function", "function": {"name": c.name, "arguments": json.dumps(c.args)}}
-                for i, c in enumerate(response.tool_calls)
-            ]})
-            for i, r in enumerate(results):
-                content = str(r.get("result", r.get("error", "")))[:3000]  # cap to avoid token overflow
-                messages.append({"role": "tool", "tool_call_id": f"call_{i}", "content": content})
+            messages.append({"role": "assistant", "content": response.text or ""})
+            for r in results:
+                content = str(r.get("result", r.get("error", "")))[:2000]
+                messages.append({"role": "user", "content": f"Tool '{r['tool']}' returned:\n{content}\n\nNow give me a natural language summary based on this data."})
             try:
                 synthesis = self.provider.complete(messages, tools=None, model=self.model, temperature=0.0)
                 final_text = synthesis.text or final_text
             except Exception:
-                pass  # synthesis is best-effort; keep original text on failure
+                pass  # synthesis is best-effort
 
         return AgentRun(text=final_text, tool_calls=response.tool_calls, tool_results=results)
