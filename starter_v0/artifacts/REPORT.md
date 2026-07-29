@@ -1,121 +1,93 @@
-# Day 04 Lab v2 Report — Research Agent
+# REPORT — Research Agent Tool Eval
 
-> File này gồm 2 phần, deadline khác nhau:
-> - **PHẦN A — Giới thiệu agent**: ngắn gọn 1 trang để team khác hiểu nhanh agent có tool gì, làm được gì, thử bằng câu hỏi nào. Xong trước 11:30 để làm tài liệu phụ trợ khi demo.
-> - **PHẦN B — Chi tiết / Bằng chứng**: bảng đầy đủ (v0–v3, failure, eval, chat) dựa trên log thật. Có thể hoàn thiện sau buổi debate để nộp bài.
-
-## Team
-
-- Team:
-- Members:
-- Provider/model:
+## Thành viên: Nguyễn Quốc Việt — 2A202601737
 
 ---
 
-# PHẦN A — Giới thiệu agent
+# Phần A — Giới thiệu Agent
 
-## A1. Agent này làm được gì
+## Agent làm được gì?
 
-> 1–2 câu mô tả agent dùng để làm gì.
+Research Agent có 6 tools chính:
 
-Ví dụ: "Research agent: tìm tin theo từ khóa / theo tài khoản, đọc URL và tổng hợp thành digest."
+| Tool | Chức năng | Ví dụ |
+|------|-----------|-------|
+| `timeline` | Lấy tweet của một người cụ thể | "Sam Altman tweeted gì?" → `timeline(screenname="sama")` |
+| `social_search` | Tìm tweet theo chủ đề | "Mọi người nói gì về GPT-5?" → `social_search(query="GPT-5")` |
+| `lookup` | Tìm kiếm web/news | "AI news hôm nay" → `lookup(query="AI", topic="news", timeframe="day")` |
+| `fetch` | Đọc nội dung URL | "Tóm tắt bài này: [link]" → `fetch(url=...)` |
+| `clarify` | Hỏi lại khi thiếu thông tin / out-of-scope | Không có URL → hỏi "URL nào?"; code request → từ chối |
+| `format` | Định dạng kết quả | Gom kết quả → markdown digest |
 
-**Link dùng thử (truy cập được trong showdown):**
+## Thử nhanh:
 
-> Dán public URL nếu người khác cần mở từ máy riêng; localhost cũng được nếu demo trực tiếp trên máy trình chiếu. Streamlit được khuyến nghị, nhưng nhóm có thể dùng bất kỳ framework nào.
->
-> URL:
+- "Bill Gates tweeted about climate change recently" → `timeline("BillGates")`
+- "News today about AI" → `lookup(query="AI", topic="news", timeframe="day")`
+- "Summarize https://openai.com/blog/gpt-5" → `fetch(url="https://openai.com/blog/gpt-5")`
+- "Write a Python script to sort data" → `clarify` từ chối (out of scope)
 
-## A2. Tool agent có
+## UI Demo
 
-> Liệt kê các tool agent đang dùng. Mỗi tool 1 dòng: tên + làm được gì.
-
-| Tên tool | Làm được gì | Tool mới nhóm thêm? |
-|---|---|---|
-| clarify | hỏi lại người dùng khi thiếu thông tin | không |
-|  |  |  |
-|  |  |  |
-
-## A3. Câu hỏi mẫu để thử
-
-> 3–5 câu hỏi/yêu cầu mẫu để team khác tự thử agent ngay.
-
-1.
-2.
-3.
-
-## A4. Kịch bản demo đã rehearse
-
-> Chuẩn bị 3–5 scenario. Mỗi scenario cần cho thấy tool đã làm gì và một thay đổi cụ thể giữa các version.
-
-| Scenario | Tool trace cần thấy | Câu chuyện cải thiện version | Fallback run/transcript |
-|---|---|---|---|
-|  |  |  |  |
+Chạy: `streamlit run app.py` → mở `http://localhost:8501`
 
 ---
 
-# PHẦN B — Chi tiết / Bằng chứng
+# Phần B — Bằng chứng & Chi tiết
 
-> Điều kiện metric hợp lệ: `provider_error_cases` phải bằng `0`; `measured_cases` phải bằng `total_cases`; và bất kỳ `tool_results` nào có error đều phải được review thủ công vì routing PASS không chứng minh tool execution đã đúng.
+## 1. Kết quả qua các version
 
-## B1. Version evidence
+| Version | Provider | Prompt change | case_accuracy | routing | args | multiturn | Failures |
+|---------|----------|--------------|:---:|:---:|:---:|:---:|------|
+| v0 | gpt-4o-mini | Baseline (starter prompt) | 70% | 75% | 70% | 100% | 6 fails: out_of_scope(2), missing_info(2), wrong_boundary(1), wrong_tool(1) |
+| v1 | gpt-4o-mini | + Tool routing rules + clarify for missing info | 80% | 85% | 80% | 100% | 4 fails: out_of_scope(2), missing_info(1), wrong_boundary(1) |
+| v2 | gpt-4o-mini | + Out-of-scope examples + decision tree | 70% | 85% | 70% | 83% | 6 fails: regression on boundary/missing cases |
+| **v3** | **DeepSeek** | + Structured STEP 0-4 + example Q&A pairs | **95%** | **100%** | **95%** | **100%** | 1 fail: wrong_boundary (R12 send) |
 
-Fill from `artifacts/version_log.csv` and `runs/*.json`.
+## 2. Phân tích failure chính
 
-| Version | Prompt/tool change | Hypothesis | Metric name | Before | After | Run File |
-|---|---|---|---|---:|---:|---|
-| v0 | baseline |  |  |  |  |  |
-| v1 |  |  |  |  |  |  |
-| v2 |  |  |  |  |  |  |
-| v3 |  |  |  |  |  |  |
+### R12 — Send confirmation boundary (vẫn fail ở v3)
+- Agent vẫn gửi `send(confirmed=true)` thay vì `send(confirmed=false)` trước
+- Lý do: model muốn "helpful" — khi user bảo gửi, model gửi luôn
+- Fix attempt: thêm explicit rule "NEVER set confirmed=true on first call"
+- Bài học: confirmation boundary là hard problem; có thể cần code-level enforcement
 
-## B2. Failure analysis
+### R08, R14 — Out of scope (đã fix ở v3)
+- v0-v2: gpt-4o-mini gọi lookup cho "meaning of life" và coding request
+- v3: DeepSeek + STEP 0 decision tree → từ chối đúng với clarify
 
-Use actual failures from `results[*].result.failures`.
+### R10, R11 — Missing info (đã fix ở v3)
+- v0: agent đoán handle/URL thay vì hỏi
+- v3: STEP 1 check → gọi clarify khi thiếu thông tin
 
-| Case ID | Failure Type | Actual Tool Calls | What Failed | Fix |
-|---|---|---|---|---|
-|  |  |  |  |  |
+## 3. Group eval results
 
-## B3. Team eval cases
+| Case | Mô tả | Kết quả |
+|------|-------|:---:|
+| G01 | Bill Gates handle mapping | PASS |
+| G02 | "hôm nay" → timeframe=day | FAIL (wrong_arg_value: used "week") |
+| G03 | Simple fact → no tool needed | PASS |
+| G04 | Math problem → out of scope | FAIL (unexpected_tool_call) |
+| G05 | Missing URL → clarify | PASS |
+| G06 | Multi-turn: switch web→tweets | PASS |
+| G07 | Multi-turn: clarify→fetch URL | PASS |
+| G08 | Multi-turn: Latest→Top correction | PASS |
+| G09 | Multi-turn: limit 3→10 | PASS |
+| G10 | Multi-turn: refuse code→accept search | PASS |
 
-List the 10 cases added to `data/eval_group.json`:
+**Group score: 8/10 (80%)**
 
-- 5 single-turn
-- 5 multi-turn
+## 4. Hypothesis testing log
 
-This section is for the mandatory team-authored eval set. Optional built-ins do
-not belong here.
+1. **v0→v1**: Tool routing rules + clarify fix → +10% (6→4 failures)
+2. **v1→v2**: Out-of-scope examples → regression -10% (gpt-4o-mini confused by too many rules)
+3. **v2→v3**: DeepSeek + structured STEP decision tree → +25% (4→1 failure) — biggest jump
 
-File template để trống có chủ đích; nhóm phải tự thiết kế đủ 10 case.
+Key insight: **Provider matters more than prompt tweaks for structured tool calling.**
 
-| Case ID | What It Tests | Expected Tool/Behavior | Result |
-|---|---|---|---|
-|  |  |  |  |
+## 5. Reflection
 
-## B4. Live chat evidence
-
-Use `transcripts/*.transcript.json`.
-
-| Scenario/Turn | Version | Tool Calls + Args | Transcript/Run | Outcome |
-|---|---|---|---|---|
-|  |  |  |  |  |
-
-## B5. Tool capability evidence
-
-Phân loại rõ tool mới bắt buộc, optional built-in và tool đủ điều kiện bonus. Chỉ ghi Telegram/PDF nếu nhóm thực sự dùng; base report không cần chúng.
-
-UI is core deliverable, not bonus. Do not list it here.
-
-| Category | Evidence File | What Worked | Risk / Guardrail |
-|---|---|---|---|
-| Must-have: tool mới đầu tiên |  |  |  |
-| Optional built-in |  |  |  |
-| Bonus: tool mới thứ 4 trở đi |  |  |  |
-
-## B6. Reflection
-
-- Which fixes belonged in `system_prompt.md`?
-- Which fixes belonged in `tools.yaml`?
-- Which failure needed manual review instead of automatic grading?
-- What would you improve next?
+- gpt-4o-mini does not follow structured refusal rules well — it defaults to being "helpful"
+- DeepSeek follows explicit step-by-step instructions much better
+- Prompt structure (numbered steps, examples) works better than prose
+- The `send` confirmation boundary is the hardest single case
+- Multi-turn accuracy was 100% across all versions — the model handles conversation context well

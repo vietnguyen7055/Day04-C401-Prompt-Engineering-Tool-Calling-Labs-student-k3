@@ -1,1 +1,5 @@
 version,author,changed_artifact,artifact_version,prompt_hash,tools_hash,reason,hypothesis,metric_name,metric_before,metric_after,run_file
+v0,Viet,system_prompt.md,v0+p...,peb1c81,t6cdb53,Baseline with intentionally vague starter prompt,"Vague prompt causes wrong tool routing and no guardrails",case_accuracy,0.0,0.70,runs/v0_B_base_openrouter_*.json
+v1,Viet,system_prompt.md+tools.yaml,v1+p...,p00df54a,tf40409,Added tool routing rules + clarify for missing info,"Explicit WHEN TO USE rules and missing info handling improve routing",case_accuracy,0.70,0.80,runs/v1_B_base_openrouter_*.json
+v2,Viet,system_prompt.md,v2+p...,p3eeb66,tf40409,Added out-of-scope examples and decision tree,"Very explicit refusal rules with examples stop agent from trying lookup on non-research tasks",case_accuracy,0.80,0.70,runs/v2_B_base_openrouter_*.json
+v3,Viet,system_prompt.md+provider,v3+p...,p27a65b,tf40409,Switched from gpt-4o-mini to DeepSeek + added structured STEP 0-4 decision tree + example Q&A,"DeepSeek follows structured instructions better than gpt-4o-mini for this task",case_accuracy,0.70,0.95,runs/v3_B_base_deepseek_*.json

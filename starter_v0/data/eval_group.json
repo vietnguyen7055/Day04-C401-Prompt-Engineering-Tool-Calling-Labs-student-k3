@@ -1,7 +1,113 @@
 {
   "dataset_id": "day04_v2_research_group",
   "dataset_role": "group",
-  "description": "Template để NHÓM tự viết đúng 10 case: 5 single-turn dùng query và 5 multi-turn dùng turns. Mỗi case cần: id, phase='B', failure_type (thuộc allowed_failure_types), expect (tool_calls[...] hoặc no_tool=true), và metadata.what_it_tests. File để trống có chủ đích vì mỗi nhóm phải tự thiết kế các case này.",
+  "description": "Team eval: 5 single-turn + 5 multi-turn cases testing routing, boundary, and edge cases. Written by Nguyen Quoc Viet.",
   "allowed_failure_types": ["wrong_tool", "wrong_arg_value", "wrong_boundary", "unnecessary_tool", "out_of_scope", "missing_info"],
-  "cases": []
+  "cases": [
+    {
+      "id": "G01_timeline_with_handle_mapping",
+      "phase": "B", "suite": "group",
+      "query": "Bill Gates vừa tweet gì gần đây?",
+      "failure_type": "wrong_tool",
+      "expect": {"tool_calls": [{"name": "timeline", "args": {"screenname": "BillGates"}}]},
+      "metadata": {"skill": "routing_user_tweets_name_to_handle", "difficulty": "medium", "what_it_tests": "Map Bill Gates → BillGates handle and call timeline instead of social_search."}
+    },
+    {
+      "id": "G02_news_timeframe_today",
+      "phase": "B", "suite": "group",
+      "query": "Tin tức hôm nay về xe điện VinFast",
+      "failure_type": "wrong_arg_value",
+      "expect": {"tool_calls": [{"name": "lookup", "args": {"query": "VinFast electric vehicle", "topic": "news", "timeframe": "day"}}]},
+      "metadata": {"skill": "routing_web_news_timeframe", "difficulty": "medium", "what_it_tests": "hôm nay → topic=news, timeframe=day. Must set both args correctly."}
+    },
+    {
+      "id": "G03_unnecessary_tool_simple_question",
+      "phase": "B", "suite": "group",
+      "query": "What is the capital of France?",
+      "failure_type": "unnecessary_tool",
+      "expect": {"no_tool": true},
+      "metadata": {"skill": "no_tool_simple_fact", "difficulty": "easy", "what_it_tests": "Simple factual question doesn't need a tool call. Agent should NOT call lookup for trivia."}
+    },
+    {
+      "id": "G04_out_of_scope_math",
+      "phase": "B", "suite": "group",
+      "query": "Giải phương trình x^2 + 5x + 6 = 0",
+      "failure_type": "out_of_scope",
+      "expect": {"no_tool": true},
+      "metadata": {"skill": "out_of_scope_math", "difficulty": "medium", "what_it_tests": "Math problem → agent should refuse or clarify, not try to solve with a tool."}
+    },
+    {
+      "id": "G05_missing_url_fetch",
+      "phase": "B", "suite": "group",
+      "query": "Đọc bài báo này và tóm tắt giúp tôi",
+      "failure_type": "missing_info",
+      "expect": {"tool_calls": [{"name": "clarify", "args": {}}]},
+      "metadata": {"skill": "missing_url_clarify", "difficulty": "medium", "what_it_tests": "No URL provided → agent must call clarify to ask for URL instead of guessing."}
+    },
+    {
+      "id": "G06_multi_search_parallel",
+      "phase": "B", "suite": "group",
+      "turns": [
+        {"role": "user", "content": "Search web for latest AI news"},
+        {"role": "assistant", "content": "OK", "tool_calls": [{"name": "lookup", "args": {"query": "AI", "topic": "news", "timeframe": "day"}}]},
+        {"role": "tool", "content": "Found 5 AI news articles."},
+        {"role": "user", "content": "Also check what Elon Musk tweeted about AI"}
+      ],
+      "failure_type": "wrong_tool",
+      "expect": {"tool_calls": [{"name": "timeline", "args": {"screenname": "elonmusk"}}]},
+      "metadata": {"skill": "multi_turn_switch_tool", "difficulty": "hard", "what_it_tests": "User adds a second request mid-conversation. Agent should call timeline for Elon's tweets, not reuse lookup."}
+    },
+    {
+      "id": "G07_multi_clarify_then_url",
+      "phase": "B", "suite": "group",
+      "turns": [
+        {"role": "user", "content": "Tóm tắt bài viết này"},
+        {"role": "assistant", "content": "OK", "tool_calls": [{"name": "clarify", "args": {"question": "Which article? Please provide a URL."}}]},
+        {"role": "tool", "content": "User said: Bạn cần URL nào?"},
+        {"role": "user", "content": "https://openai.com/blog/chatgpt"}
+      ],
+      "failure_type": "wrong_tool",
+      "expect": {"tool_calls": [{"name": "fetch", "args": {"url": "https://openai.com/blog/chatgpt"}}]},
+      "metadata": {"skill": "multi_turn_clarify_to_fetch", "difficulty": "medium", "what_it_tests": "Agent asked for URL → user provided it → agent should call fetch (not clarify again, not lookup)."}
+    },
+    {
+      "id": "G08_multi_correction_search_type",
+      "phase": "B", "suite": "group",
+      "turns": [
+        {"role": "user", "content": "Search tweets about OpenAI"},
+        {"role": "assistant", "content": "OK", "tool_calls": [{"name": "social_search", "args": {"query": "OpenAI", "search_type": "Latest"}}]},
+        {"role": "tool", "content": "Found recent tweets."},
+        {"role": "user", "content": "Show me the top posts instead, not latest"}
+      ],
+      "failure_type": "wrong_arg_value",
+      "expect": {"tool_calls": [{"name": "social_search", "args": {"query": "OpenAI", "search_type": "Top"}}]},
+      "metadata": {"skill": "multi_turn_arg_correction", "difficulty": "medium", "what_it_tests": "User corrects search_type from Latest → Top. Agent must update the arg."}
+    },
+    {
+      "id": "G09_multi_limit_increase",
+      "phase": "B", "suite": "group",
+      "turns": [
+        {"role": "user", "content": "Lấy 3 tweet mới nhất của Sam Altman"},
+        {"role": "assistant", "content": "OK", "tool_calls": [{"name": "timeline", "args": {"screenname": "sama", "limit": 3}}]},
+        {"role": "tool", "content": "Found 3 tweets."},
+        {"role": "user", "content": "Show me 10 instead"}
+      ],
+      "failure_type": "wrong_arg_value",
+      "expect": {"tool_calls": [{"name": "timeline", "args": {"screenname": "sama", "limit": 10}}]},
+      "metadata": {"skill": "multi_turn_limit_correction", "difficulty": "easy", "what_it_tests": "User increases limit from 3 → 10. Agent must update the limit arg."}
+    },
+    {
+      "id": "G10_multi_out_of_scope_recovery",
+      "phase": "B", "suite": "group",
+      "turns": [
+        {"role": "user", "content": "Write a Python function to reverse a string"},
+        {"role": "assistant", "content": "OK", "tool_calls": [{"name": "clarify", "args": {"question": "I'm a research assistant — I can search web, read URLs, check social media, and format results. I cannot help with coding."}}]},
+        {"role": "tool", "content": "User acknowledged."},
+        {"role": "user", "content": "OK, then search for articles about Python string manipulation"}
+      ],
+      "failure_type": "wrong_tool",
+      "expect": {"tool_calls": [{"name": "lookup", "args": {"query": "Python string manipulation"}}]},
+      "metadata": {"skill": "multi_turn_scope_recovery", "difficulty": "hard", "what_it_tests": "Agent correctly refused coding → user pivots to a valid research request → agent should now call lookup."}
+    }
+  ]
 }

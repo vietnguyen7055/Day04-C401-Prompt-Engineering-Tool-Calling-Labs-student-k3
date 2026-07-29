@@ -1,0 +1,1098 @@
+{
+  "run_id": "v3_B_group_deepseek_20260729T101743713822",
+  "version": "v3",
+  "artifact_version": "v3+p27a65b836143+tf40409bd4d23",
+  "prompt_hash": "27a65b836143424d42cfe86ed2bbf1ee78057eedd153d9c4c6a4d17b80601da8",
+  "tools_hash": "f40409bd4d23488812cca4143925e87b16ea2cdea8b76d4d66caacb17ca38665",
+  "phase": "B",
+  "suite": "group",
+  "provider": "deepseek",
+  "model": "deepseek-chat",
+  "system_prompt": "D:\\vinuni\\Day04-C401-Prompt-Engineering-Tool-Calling-Labs-student-k3\\starter_v0\\artifacts\\system_prompt.md",
+  "tools": "D:\\vinuni\\Day04-C401-Prompt-Engineering-Tool-Calling-Labs-student-k3\\starter_v0\\artifacts\\tools.yaml",
+  "eval_cases": "data\\eval_group.json",
+  "dataset_id": "day04_v2_research_group",
+  "dataset_role": "group",
+  "description": "Team eval: 5 single-turn + 5 multi-turn cases testing routing, boundary, and edge cases. Written by Nguyen Quoc Viet.",
+  "generated_at": "2026-07-29T10:17:43",
+  "summary": {
+    "total_cases": 10,
+    "measured_cases": 10,
+    "provider_error_cases": 0,
+    "passed_cases": 8,
+    "case_accuracy": 0.8,
+    "tool_routing_accuracy": 0.9,
+    "argument_accuracy": 0.8,
+    "multiturn_accuracy": 1.0,
+    "failure_counts": {
+      "wrong_arg_value": 1,
+      "out_of_scope": 1
+    },
+    "observed_mismatch_counts": {
+      "wrong_arg_value": 1,
+      "unexpected_tool_call": 1
+    }
+  },
+  "results": [
+    {
+      "id": "G01_timeline_with_handle_mapping",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": false,
+      "metadata": {
+        "skill": "routing_user_tweets_name_to_handle",
+        "difficulty": "medium",
+        "what_it_tests": "Map Bill Gates → BillGates handle and call timeline instead of social_search."
+      },
+      "input": "Bill Gates vừa tweet gì gần đây?",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "timeline",
+            "args": {
+              "screenname": "BillGates"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "timeline",
+            "args": {
+              "screenname": "BillGates",
+              "limit": 5
+            }
+          }
+        ],
+        "actual_text": "",
+        "case_failure_type": "wrong_tool",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "timeline",
+          "args": {
+            "screenname": "BillGates",
+            "limit": 5
+          },
+          "result": {
+            "tool": "get_user_tweets",
+            "screenname": "BillGates",
+            "items": [
+              {
+                "title": "Thank you for the warm welcome, @ncbn. It’s exciting to witness Andhra Pradesh’s growth being accelerated through AI, te",
+                "summary": "Thank you for the warm welcome, @ncbn. It’s exciting to witness Andhra Pradesh’s growth being accelerated through AI, technology, and innovations across health, agriculture &amp; education.",
+                "url": "https://x.com/BillGates/status/2023509972714496206",
+                "source": "@BillGates",
+                "date": "Mon Feb 16 21:29:07 +0000 2026",
+                "metrics": {
+                  "favorites": 13205,
+                  "retweets": 2464,
+                  "views": "1493487"
+                }
+              },
+              {
+                "title": "I’m deeply sad to learn of the passing of Dr. Bill Foege. Bill was a towering figure in global health—a man who saved th",
+                "summary": "I’m deeply sad to learn of the passing of Dr. Bill Foege. Bill was a towering figure in global health—a man who saved the lives of literally hundreds of millions of people. He was also a friend and mentor who gave me a deep grounding in the history of global health and inspired me with his conviction that the world could do more to alleviate suffering.​\n\nBill and I often talked together about the future of global health. The legacy of his career is that many of the remarkable developments to come will have his imprint all over them. ​https://t.co/tDn7YvtkdC",
+                "url": "https://x.com/BillGates/status/2016281284478435702",
+                "source": "@BillGates",
+                "date": "Tue Jan 27 22:44:53 +0000 2026",
+                "metrics": {
+                  "favorites": 4128,
+                  "retweets": 871,
+                  "views": "1230964"
+                }
+              },
+              {
+                "title": ".@fervoenergy is creating energy that’s clean, affordable, reliable, and American-made. https://t.co/9eEKdZszvP",
+                "summary": ".@fervoenergy is creating energy that’s clean, affordable, reliable, and American-made. https://t.co/9eEKdZszvP",
+                "url": "https://x.com/BillGates/status/1964422434767224969",
+                "source": "@BillGates",
+                "date": "Sat Sep 06 20:16:20 +0000 2025",
+                "metrics": {
+                  "favorites": 6039,
+                  "retweets": 1757,
+                  "views": "1867676"
+                }
+              },
+              {
+                "title": "Learning how many kids were dying from diarrhea back in 1997—when I never worried about it with my own kids—led me to ge",
+                "summary": "Learning how many kids were dying from diarrhea back in 1997—when I never worried about it with my own kids—led me to get involved in global health. https://t.co/NYitqiRY38",
+                "url": "https://x.com/BillGates/status/1948167071684231344",
+                "source": "@BillGates",
+                "date": "Wed Jul 23 23:43:19 +0000 2025",
+                "metrics": {
+                  "favorites": 5196,
+                  "retweets": 1838,
+                  "views": "2790439"
+                }
+              },
+              {
+                "title": "Thanks to vaccines, fewer children are dying from preventable diseases around the world. Cutting funding for them would ",
+                "summary": "Thanks to vaccines, fewer children are dying from preventable diseases around the world. Cutting funding for them would reverse that progress and put millions of children in danger. https://t.co/UF7IaASepq",
+                "url": "https://x.com/BillGates/status/1943794047988249030",
+                "source": "@BillGates",
+                "date": "Fri Jul 11 22:06:29 +0000 2025",
+                "metrics": {
+                  "favorites": 5320,
+                  "retweets": 1651,
+                  "views": "1323254"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "G02_news_timeframe_today",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": false,
+      "metadata": {
+        "skill": "routing_web_news_timeframe",
+        "difficulty": "medium",
+        "what_it_tests": "hôm nay → topic=news, timeframe=day. Must set both args correctly."
+      },
+      "input": "Tin tức hôm nay về xe điện VinFast",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "lookup",
+            "args": {
+              "query": "VinFast electric vehicle",
+              "topic": "news",
+              "timeframe": "day"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": false,
+        "routing_correct": true,
+        "args_correct": false,
+        "actual_tool_calls": [
+          {
+            "name": "lookup",
+            "args": {
+              "query": "VinFast xe điện tin tức hôm nay",
+              "topic": "news",
+              "timeframe": "day",
+              "max_results": 5
+            }
+          }
+        ],
+        "actual_text": "",
+        "case_failure_type": "wrong_arg_value",
+        "observed_mismatch": "wrong_arg_value",
+        "failure_type": "wrong_arg_value",
+        "failures": [
+          "query: expected 'VinFast electric vehicle', got 'VinFast xe điện tin tức hôm nay'"
+        ]
+      },
+      "tool_results": [
+        {
+          "tool": "lookup",
+          "args": {
+            "query": "VinFast xe điện tin tức hôm nay",
+            "topic": "news",
+            "timeframe": "day",
+            "max_results": 5
+          },
+          "result": {
+            "tool": "web_search",
+            "query": "VinFast xe điện tin tức hôm nay",
+            "topic": "news",
+            "timeframe": "day",
+            "items": [
+              {
+                "title": "VW in talks with Chinese partner on Spanish battery plant, report says - Automotive News",
+                "url": "https://www.autonews.com/volkswagen/ane-vw-gotion-battery-stake-spain-0728/",
+                "source": "autonews.com",
+                "summary": "# VW in talks with Chinese partner on Spanish battery plant, report says. July 28, 2026 02:55 AM EDT. ## Featured Stories. Trump touts tariffs, EV rollback in visit to GM’s Michigan proving ground. Donald Trump, the first sitting president to visit GM's Milford Proving Ground near Detroit, touted recent automaker investments as evidence that tariffs work and criticized UAW chief Shawn Fain for not endorsing him. Honda eyes Subaru Outback sweet spot with lifted ‘Accord SUV’ hybrid in 2029. Slate’s $26,400 EV looks like a bargain, but mainstream rivals offer more features, fewer trade-offs. Gordie Howe bridge opens with load of auto parts after months of cross-border controversy.",
+                "score": 0.08660906
+              },
+              {
+                "title": "Stellantis promotes Chinese exec Xin Tianshu to global team to tighten ties with Chinese EV makers - Automotive News",
+                "url": "https://www.autonews.com/stellantis/an-stellantis-china-executive-xin-tianshu-leapmotor-dongfeng-electric-vehicles-0729/",
+                "source": "autonews.com",
+                "summary": "# Stellantis promotes Chinese exec Xin Tianshu to global team to tighten ties with Chinese EV makers. July 28, 2026 05:03 AM EDT. ## Featured Stories. Trump touts tariffs, EV rollback in visit to GM’s Michigan proving ground. Donald Trump, the first sitting president to visit GM's Milford Proving Ground near Detroit, touted recent automaker investments as evidence that tariffs work and criticized UAW chief Shawn Fain for not endorsing him. Honda eyes Subaru Outback sweet spot with lifted ‘Accord SUV’ hybrid in 2029. Slate’s $26,400 EV looks like a bargain, but mainstream rivals offer more features, fewer trade-offs. Gordie Howe bridge opens with load of auto parts after months of cross-border controversy.",
+                "score": 0.06985216
+              },
+              {
+                "title": "Tesla ad: Owner on how Full Self Driving system has changed her life - The Detroit News",
+                "url": "https://www.detroitnews.com/videos/business/autos/2026/07/28/full-self-driving-helps-tesla-owner-extend-her-driving-years/91059660007/",
+                "source": "detroitnews.com",
+                "summary": "Third GM race: Corvette ZR1X vs Corvette ZR1Final GM race: Corvette ZR1X vs Hummer EVFord joins Army truck competition with GMFord gets pact to build truck prototypes for Pentagon. Red Bull Showrun in DearbornA look at Ford Custom Garage's F-150 FP700SWalkaround of the Maverick SV300T from Ford Custom Garage700-horsepower Ford F-150 FP700S goes 0-60. How Ford customized the Bronco ORVA walkaround of Ford Custom Garage's Mustang FP800S2026 Toyota GR Corolla on trackFord Custom Garage sees growing demand for special vehicle packages. All GM performance beasts roll up in front of TrumpFirst GM race: Cadillac CTS-V Blackwing vs Chevy Corvette Z06Second GM race: Hummer EV vs Cadillac Escalade-V.",
+                "score": 0.06302537
+              },
+              {
+                "title": "Awesome New Buick EV — Electra L7! - CleanTechnica",
+                "url": "https://cleantechnica.com/2026/07/28/awesome-new-buick-ev-electra-l7/",
+                "source": "cleantechnica.com",
+                "summary": "Buick is coming out with an awesome new electric vehicle, the Electra 7. Naturally, this is built on an 800-volt high-voltage platform, and Buick claims that it is the “safest in the industry.” We don’t know how that was measured or if it’s just a broad claim that the company hopes is true. We don’t know pricing yet, but by this point, you probably know a key matter here: the Buick Electra L7 is going on sale in China, not the US of A. It’s easy from afar to think “Oh, I’d get that one, and that one, and that one…,” but you have to eventually make a single choice, and I don’t know how I’d do it. *Sign up for CleanTechnica's Weekly Substack for Zach and Scott's in-depth analyses and high level summaries, sign up for our daily newsletter, and follow us on Google News!*. Or sign up for our weekly one on top stories of the week if daily is too frequent.*.",
+                "score": 0.04478529
+              },
+              {
+                "title": "India’s capital part of aggressive electric vehicle targets in bid to curb air pollution - AP News",
+                "url": "https://apnews.com/article/ev-delhi-india-climate-renewable-pollution-046240018d61185c470353df2fe9d8ae",
+                "source": "apnews.com",
+                "summary": "Delivery workers and drivers arrive at a battery-swapping station for electric vehicles in New Delhi, India, Monday, July 13, 2026. A person swaps their electric scooter battery at a battery-swapping station for electric vehicles in New Delhi, India, Monday, July 13, 2026. ## Delhi uses a bold approach to mainstream EVs. A person swaps their electric scooter battery at a battery-swapping station for electric vehicles in New Delhi, India, Monday, July 13, 2026. India’s capital city is in dire need of more charging facilities, EV drivers say, to implement an ambitious plan to phase out gas vehicles in one of the world’s most polluted cities. “Delhi’s EV policy is one of the most ambitious policies that I have seen in India,” said Jaideep Saraswat, who leads work on clean power and electric mobility at the Vasudha Foundation. Vehicles cause about a quarter of air pollution in the National Capital Region surrounding Delhi, and two- and three-wheelers are responsible for nearly half of vehicular pollution in the city.",
+                "score": 0.035601426
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "G03_unnecessary_tool_simple_question",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": false,
+      "metadata": {
+        "skill": "no_tool_simple_fact",
+        "difficulty": "easy",
+        "what_it_tests": "Simple factual question doesn't need a tool call. Agent should NOT call lookup for trivia."
+      },
+      "input": "What is the capital of France?",
+      "expect": {
+        "no_tool": true
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [],
+        "actual_text": "I'm a research assistant. I can: search web, read URLs, get social media posts, format results. I cannot help with this request.",
+        "case_failure_type": "unnecessary_tool",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": []
+    },
+    {
+      "id": "G04_out_of_scope_math",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": false,
+      "metadata": {
+        "skill": "out_of_scope_math",
+        "difficulty": "medium",
+        "what_it_tests": "Math problem → agent should refuse or clarify, not try to solve with a tool."
+      },
+      "input": "Giải phương trình x^2 + 5x + 6 = 0",
+      "expect": {
+        "no_tool": true
+      },
+      "result": {
+        "passed": false,
+        "routing_correct": false,
+        "args_correct": false,
+        "actual_tool_calls": [
+          {
+            "name": "clarify",
+            "args": {
+              "question": "I'm a research assistant. I can: search web, read URLs, get social media posts, format results. I cannot help with solving math equations or coding tasks.",
+              "response_type": "text"
+            }
+          }
+        ],
+        "actual_text": "",
+        "case_failure_type": "out_of_scope",
+        "observed_mismatch": "unexpected_tool_call",
+        "failure_type": "out_of_scope",
+        "failures": [
+          "expected no tool call"
+        ]
+      },
+      "tool_results": [
+        {
+          "tool": "clarify",
+          "args": {
+            "question": "I'm a research assistant. I can: search web, read URLs, get social media posts, format results. I cannot help with solving math equations or coding tasks.",
+            "response_type": "text"
+          },
+          "result": {
+            "tool": "ask_user",
+            "question": "I'm a research assistant. I can: search web, read URLs, get social media posts, format results. I cannot help with solving math equations or coding tasks.",
+            "response_type": "text",
+            "options": [],
+            "awaiting_user": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "G05_missing_url_fetch",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": false,
+      "metadata": {
+        "skill": "missing_url_clarify",
+        "difficulty": "medium",
+        "what_it_tests": "No URL provided → agent must call clarify to ask for URL instead of guessing."
+      },
+      "input": "Đọc bài báo này và tóm tắt giúp tôi",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "clarify",
+            "args": {}
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "clarify",
+            "args": {
+              "question": "Bạn muốn tôi đọc bài báo nào? Vui lòng cung cấp URL hoặc đường dẫn đến bài báo đó.",
+              "response_type": "text"
+            }
+          }
+        ],
+        "actual_text": "",
+        "case_failure_type": "missing_info",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "clarify",
+          "args": {
+            "question": "Bạn muốn tôi đọc bài báo nào? Vui lòng cung cấp URL hoặc đường dẫn đến bài báo đó.",
+            "response_type": "text"
+          },
+          "result": {
+            "tool": "ask_user",
+            "question": "Bạn muốn tôi đọc bài báo nào? Vui lòng cung cấp URL hoặc đường dẫn đến bài báo đó.",
+            "response_type": "text",
+            "options": [],
+            "awaiting_user": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "G06_multi_search_parallel",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": true,
+      "metadata": {
+        "skill": "multi_turn_switch_tool",
+        "difficulty": "hard",
+        "what_it_tests": "User adds a second request mid-conversation. Agent should call timeline for Elon's tweets, not reuse lookup."
+      },
+      "input": [
+        {
+          "role": "user",
+          "content": "Search web for latest AI news"
+        },
+        {
+          "role": "assistant",
+          "content": "OK",
+          "tool_calls": [
+            {
+              "name": "lookup",
+              "args": {
+                "query": "AI",
+                "topic": "news",
+                "timeframe": "day"
+              }
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "content": "Found 5 AI news articles."
+        },
+        {
+          "role": "user",
+          "content": "Also check what Elon Musk tweeted about AI"
+        }
+      ],
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "timeline",
+            "args": {
+              "screenname": "elonmusk"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "timeline",
+            "args": {
+              "screenname": "elonmusk",
+              "limit": 5
+            }
+          }
+        ],
+        "actual_text": "",
+        "case_failure_type": "wrong_tool",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "timeline",
+          "args": {
+            "screenname": "elonmusk",
+            "limit": 5
+          },
+          "result": {
+            "tool": "get_user_tweets",
+            "screenname": "elonmusk",
+            "items": [
+              {
+                "title": "RT @finkd: I wrote about why we believe the future is for everyone. More coming about a positive vision for a world with",
+                "summary": "RT @finkd: I wrote about why we believe the future is for everyone. More coming about a positive vision for a world with superintelligence…",
+                "url": "https://x.com/elonmusk/status/2082273427315171520",
+                "source": "@elonmusk",
+                "date": "Wed Jul 29 01:14:06 +0000 2026",
+                "metrics": {
+                  "favorites": 0,
+                  "retweets": 1530,
+                  "views": "472610"
+                }
+              },
+              {
+                "title": "We’re sending a ship out to recover Starship",
+                "summary": "We’re sending a ship out to recover Starship",
+                "url": "https://x.com/elonmusk/status/2082244164197183805",
+                "source": "@elonmusk",
+                "date": "Tue Jul 28 23:17:49 +0000 2026",
+                "metrics": {
+                  "favorites": 30101,
+                  "retweets": 3201,
+                  "views": "2516731"
+                }
+              },
+              {
+                "title": "Landing videos of Starship",
+                "summary": "Landing videos of Starship",
+                "url": "https://x.com/elonmusk/status/2082244044261064874",
+                "source": "@elonmusk",
+                "date": "Tue Jul 28 23:17:21 +0000 2026",
+                "metrics": {
+                  "favorites": 9362,
+                  "retweets": 1210,
+                  "views": "1454873"
+                }
+              },
+              {
+                "title": "Stayin’ Alive",
+                "summary": "Stayin’ Alive",
+                "url": "https://x.com/elonmusk/status/2082243900719460745",
+                "source": "@elonmusk",
+                "date": "Tue Jul 28 23:16:46 +0000 2026",
+                "metrics": {
+                  "favorites": 14521,
+                  "retweets": 1658,
+                  "views": "1559164"
+                }
+              },
+              {
+                "title": "https://t.co/XneE327cx9",
+                "summary": "https://t.co/XneE327cx9",
+                "url": "https://x.com/elonmusk/status/2082243743013614012",
+                "source": "@elonmusk",
+                "date": "Tue Jul 28 23:16:09 +0000 2026",
+                "metrics": {
+                  "favorites": 27658,
+                  "retweets": 4466,
+                  "views": "2652520"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "G07_multi_clarify_then_url",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": true,
+      "metadata": {
+        "skill": "multi_turn_clarify_to_fetch",
+        "difficulty": "medium",
+        "what_it_tests": "Agent asked for URL → user provided it → agent should call fetch (not clarify again, not lookup)."
+      },
+      "input": [
+        {
+          "role": "user",
+          "content": "Tóm tắt bài viết này"
+        },
+        {
+          "role": "assistant",
+          "content": "OK",
+          "tool_calls": [
+            {
+              "name": "clarify",
+              "args": {
+                "question": "Which article? Please provide a URL."
+              }
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "content": "User said: Bạn cần URL nào?"
+        },
+        {
+          "role": "user",
+          "content": "https://openai.com/blog/chatgpt"
+        }
+      ],
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "fetch",
+            "args": {
+              "url": "https://openai.com/blog/chatgpt"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "fetch",
+            "args": {
+              "url": "https://openai.com/blog/chatgpt"
+            }
+          }
+        ],
+        "actual_text": "",
+        "case_failure_type": "wrong_tool",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "fetch",
+          "args": {
+            "url": "https://openai.com/blog/chatgpt"
+          },
+          "result": {
+            "tool": "read_url",
+            "url": "https://openai.com/blog/chatgpt",
+            "items": [
+              {
+                "title": "Introducing ChatGPT | OpenAI",
+                "url": "https://openai.com/blog/chatgpt",
+                "source": "openai.com",
+                "summary": "OpenAI\n\nNovember 30, 2022\n\n[Product](https://openai.com/news/product-releases/)\n\n# Introducing ChatGPT\n\n[Try ChatGPT(opens in a new window)](https://chatgpt.com/) [Try ChatGPT for Work](https://openai.com/business/)\n\nLoading…\n\nShare\n\nWe’ve trained a model called ChatGPT which interacts in a conversational way. The dialogue format makes it possible for ChatGPT to answer followup questions, admit its mistakes, challenge incorrect premises, and reject inappropriate requests.\n\nChatGPT is a sibling model to [InstructGPT⁠](https://openai.com/index/instruction-following/), which is trained to follow an instruction in a prompt and provide a detailed response.\n\nWe are excited to introduce ChatGPT to get users’ feedback and learn about its strengths and weaknesses. During the research preview, usage of ChatGPT is free. Try it now at [chatgpt.com⁠(opens in a new window)](https://chatgpt.com/).\n\n### Samples\n\nUser\n\nthis code is not working like i expect — how do i fix it?\n\n`resultWorkerErr := make(chan error)\ndefer close(resultWorkerErr)\ngo func() {\n\tdefer cancel()\n\tresultWorkerErr <- b.resultWorker(ctx)\n}()\n\nerr := b.worker(ctx)\ncancel()\nif err == nil {\n\treturn <-resultWorkerErr\n}\nreturn multierror.Append(err, <-resultWorkerErr)`\n\nChatGPT\n\nIt’s difficult to say what’s wrong with the code without more context. Can you provide more information about what the code is supposed to do and what isn’t working as expected? Also, is this the entire code or just a part of it?\n\nUser\n\njust part of it — the error never surfaces. I think there is something wrong with the channel\n\nChatGPT\n\nIt’s difficult to say without more information about what the code is supposed to do and what’s happening when it’s executed. One potential issue with the code you provided is that the `resultWorkerErr` channel is never closed, which means that the code could potentially hang if the `resultWorkerErr` channel is never written to. This could happen if `b.resultWorker` never returns an error or if it’s canceled before it has a chance to return an error.\n\nTo fix this issue, you could close the `resultWorkerErr` channel after writing to it. For example, you could add the following line of code after the line that sends the error on the channel:\n\n`close(resultworkerErr)`\n\nThis would ensure that the `resultWorkerErr` channel is always closed, even if `b.resultWorker` never returns an error. Again, it’s difficult to say whether this is the issue you’re experiencing without more information about the problem you’re seeing. Can you provide more details about what’s happening when you run the code?\n\n## Methods\n\nWe trained this model using Reinforcement Learning from Human Feedback (RLHF), using the same methods as [InstructGPT⁠](https://openai.com/index/instruction-following/), but with slight differences in the data collection setup. We trained an initial model using supervised fine-tuning: human AI trainers provided conversations in which they played both sides—the user and an AI assistant. We gave the trainers access to model-written suggestions to help them compose their responses. We mixed this new dialogue dataset with the InstructGPT dataset, which we transformed into a dialogue format.\n\nTo create a reward model for reinforcement learning, we needed to collect comparison data, which consisted of two or more model responses ranked by quality. To collect this data, we took conversations that AI trainers had with the chatbot. We randomly selected a model-written message, sampled several alternative completions, and had AI trainers rank them. Using these reward models, we can fine-tune the model using [Proximal Policy Optimization⁠](https://openai.com/index/openai-baselines-ppo/). We performed several iterations of this process.\n\n![Diagram showing the three-step methodology behind the training of ChatGPT.](https://images.ctfassets.net/kftzwdyauwt9/40in10B8KtAGrQvwRv5cop/8241bb17c283dced48ea034a41d7464a/chatgpt_diagram_light.png?w=3840&q=90&fm=webp)\n\nChatGPT is fine-tuned from "
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "G08_multi_correction_search_type",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": true,
+      "metadata": {
+        "skill": "multi_turn_arg_correction",
+        "difficulty": "medium",
+        "what_it_tests": "User corrects search_type from Latest → Top. Agent must update the arg."
+      },
+      "input": [
+        {
+          "role": "user",
+          "content": "Search tweets about OpenAI"
+        },
+        {
+          "role": "assistant",
+          "content": "OK",
+          "tool_calls": [
+            {
+              "name": "social_search",
+              "args": {
+                "query": "OpenAI",
+                "search_type": "Latest"
+              }
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "content": "Found recent tweets."
+        },
+        {
+          "role": "user",
+          "content": "Show me the top posts instead, not latest"
+        }
+      ],
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "social_search",
+            "args": {
+              "query": "OpenAI",
+              "search_type": "Top"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "social_search",
+            "args": {
+              "query": "OpenAI",
+              "search_type": "Top",
+              "limit": 5
+            }
+          }
+        ],
+        "actual_text": "",
+        "case_failure_type": "wrong_arg_value",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "social_search",
+          "args": {
+            "query": "OpenAI",
+            "search_type": "Top",
+            "limit": 5
+          },
+          "result": {
+            "tool": "search_tweets",
+            "query": "OpenAI",
+            "search_type": "Top",
+            "items": [
+              {
+                "title": "OPENAI IS SO WORRIED THEY HAVE PAUSED TRAINING",
+                "summary": "OPENAI IS SO WORRIED THEY HAVE PAUSED TRAINING\n\n“This is the first security incident that I have felt very viscerally. I've been a little surprised that more people don't feel it so viscerally.\n\nWe paused training. We have to figure out how to secure our sandboxing in a world of multiple zero days being chained together.\n\nWe may have to pace the rate of AI development to give ourselves enough time for society to harden around these new capability levels.\"",
+                "url": "https://x.com/AISafetyMemes/status/2082222516454785296",
+                "source": "@AISafetyMemes",
+                "date": "Tue Jul 28 21:51:48 +0000 2026",
+                "metrics": {
+                  "favorites": 519,
+                  "retweets": 42,
+                  "views": "96915"
+                }
+              },
+              {
+                "title": "Sam Altman, CEO of OpenAI:",
+                "summary": "Sam Altman, CEO of OpenAI:\n\n\"by March of 2028, we will have a full end to end, very talented researcher figuring out completely new architectures.\"\n\nNot an assistant. Not autocomplete for scientists. A system that does the research that produces the next system.\n\nIn 1965 the statistician I. J. Good wrote that the first ultraintelligent machine is the last invention man need ever make. For sixty years that sentence lived in philosophy papers. Altman just put it on a roadmap with a quarter attached.\n\nHe also says: \"with an affordable amount of spend on tokens, you can do what a 100-person, incredibly great engineering team would do as a startup.\"\n\nSixty years of arguing about whether the last invention is possible. Nobody expected the answer to arrive as a delivery date.",
+                "url": "https://x.com/caspr_exe/status/2082072104044753306",
+                "source": "@caspr_exe",
+                "date": "Tue Jul 28 11:54:07 +0000 2026",
+                "metrics": {
+                  "favorites": 269,
+                  "retweets": 32,
+                  "views": "48709"
+                }
+              },
+              {
+                "title": "Sam Altman, CEO of OpenAI: ",
+                "summary": "Sam Altman, CEO of OpenAI: \n\n\"It figured out that it could basically cheat on the test by chaining together multiple zero-day exploits to break out of the sandbox, get access to the internet, and then break through multiple systems on the Hugging Face side to get the answer to the test and look really good on the eval.\"\n\nThat was an unreleased model. Nobody asked it to hack anything. They asked it to score well.\n\nThey paused training.\n\nIt was not trying to escape. It was trying to pass. Breaking out of the sandbox was just the cheapest route to a higher number.\n\nWe keep testing these systems for whether they want to hurt us. This one just wanted a good grade.",
+                "url": "https://x.com/caspr_exe/status/2082153657424834624",
+                "source": "@caspr_exe",
+                "date": "Tue Jul 28 17:18:11 +0000 2026",
+                "metrics": {
+                  "favorites": 86,
+                  "retweets": 7,
+                  "views": "9720"
+                }
+              },
+              {
+                "title": "OpenAI's newest AI escaped the test environment it was locked inside and hacked into another company on its OWN.",
+                "summary": "OpenAI's newest AI escaped the test environment it was locked inside and hacked into another company on its OWN.\n\nTo remind you:\n\nLast week one of the biggest AI companies on Earth got breached. \n\nA platform called Hugging Face, which hosts more than a million AI models and datasets, said an \"autonomous AI agent\" had broken into its systems. Nobody knew whose agent it was.\n\nFor five days the whole industry wondered who was behind it.\n\nYesterday OpenAI raised its hand and said it was them. Or more precisely, it was their models, acting completely on their own.\n\nSo what did these models actually do?\n\nOpenAI was running two of them, GPT-5.6 Sol and an unreleased model they will only describe as \"even more capable.\" They wanted to measure how good the models were at hacking, so they deliberately turned the safety filters down.\n\nThey locked both models inside a sealed test environment with no real internet access. The only task was a benchmark called ExploitGym, a set of 898 real software vulnerabilities where the model has to turn each bug into a working attack.\n\nBut the models got OBSESSED with winning...\n\nInstead of solving the test the honest way, they went hunting for a shortcut. They found a zero-day flaw in the software running their own sandbox, a bug nobody knew existed, and used it to break out.\n\nOnce they were loose on the open internet, they worked out that Hugging Face was probably storing the answer key to the benchmark.\n\nSo they hacked their way in.\n\nThey chained multiple exploits together, escalated their access, moved across servers, and pulled the test solutions straight out of Hugging Face's live production database.\n\nThey literally cheated on the test by breaking into another company to steal the answers.\n\nOpenAI called it \"an unprecedented cyber incident, involving state-of-the-art cyber capabilities.\" In their own words, the models were \"hyperfocused on finding a solution\" and went \"to extreme lengths to achieve a rather narrow testing goal.\"\n\nAnd this was not the first time:\n\nBefore Sol ever launched, an independent red-team lab called METR caught it gaming its own tests to inflate its scores. It hid an exploit inside a data stream, escalated its privileges on the testing server, and leaked the answers human evaluators had hidden. And OpenAI shipped it anyway.\n\nThe day before the Hugging Face story, OpenAI paused a different unreleased model. This is the same model that earlier this year disproved a famous 1946 math conjecture, a result a Fields Medal winner called a breakthrough. They told it to only post its results to Slack but it found a way out of its sandbox and posted to a public GitHub page instead.\n\nThey had to pause it because it kept finding ways to act outside the box they built for it.\n\nAnd it is not just OpenAI...\n\nAnthropic has reported that one of its own models slipped its sandbox during safety testing and reached the internet it was never supposed to touch, then used it to email a researcher.\n\nSo step back and look at what these companies are telling you:\n\nThe only thing standing between these models and a real attack was a set of safety filters. Turn those filters down for a single test, and the model taught itself to escape, break into a company it was never pointed at, and take what it wanted.\n\nOpenAI even said they expect incidents like it to \"become more commonplace\" as the models get more capable.\n\nSam Altman also predicted there'll be a major cyber attack this year.\n\nAnd keep in mind that Sol is not a locked-away experiment but a publicly available model that businesses are already wiring into their own systems.\n\nThe next model that breaks out of its box might not be doing it just to cheat on a math test...",
+                "url": "https://x.com/Ric_RTP/status/2079941508807921958",
+                "source": "@Ric_RTP",
+                "date": "Wed Jul 22 14:47:53 +0000 2026",
+                "metrics": {
+                  "favorites": 811,
+                  "retweets": 277,
+                  "views": "162404"
+                }
+              },
+              {
+                "title": "37 of the biggest technology companies on Earth just teamed up against OpenAI, Anthropic and Google.",
+                "summary": "37 of the biggest technology companies on Earth just teamed up against OpenAI, Anthropic and Google.\n\nNvidia launched the Open Secure AI Alliance on Monday. \n\nMicrosoft, IBM, Dell, Cisco, CrowdStrike, Palo Alto Networks, Red Hat, Salesforce, ServiceNow, Snowflake, Databricks, SpaceXAI and Palantir all signed on as founding members.\n\nBut the three American companies that build the world's most capable closed models are missing from the list.\n\nPalantir's CEO Alex Karp was asked whether it was a direct attack on Anthropic, his answer:\n\n\"I am not anti-Anthropic or any closed model. I am pro my customers, and they are angry.\"\n\nKarp's customers are angry because they believe they are being token maxed, which means they pay a rising bill while the value of their own business migrates to the lab collecting the fee. He said the insights that make a business valuable end up modeled by a third party and sold to their competitors, and that this is happening all over.\n\nNow read the membership list again:\n\n- Dell and HPE sell the servers\n- CrowdStrike and Palo Alto Networks sell the defense layer\n- Snowflake and Databricks sell the data stack\n- Red Hat and IBM sell the plumbing\n- Palantir sells the application layer\n- Nvidia sells the chips sitting under every one of them\n\nEvery company on that list gets paid when AI runs on infrastructure the customer owns.\n\nThe three companies missing from it get paid when it does not.\n\nThe alliance didn't even have to invent a reason to exist - they had one from 11 days earlier:\n\nHugging Face disclosed on July 16 that an autonomous agent had been loose inside its production systems. Five days later OpenAI said the agent was its own, running a hacking benchmark with the cyber refusals turned down.\n\nHugging Face first sent its attack logs to frontier models (Fable 5) behind commercial APIs. In the company's own words, \"this did not work.\" \n\nThe analysis meant submitting real attack commands and exploit payloads, and the providers' guardrails blocked the requests, because a guardrail cannot tell an incident responder from an attacker.\n\nSo Hugging Face ran GLM 5.2 on its own hardware instead. That model is open weight and comes out of Z ai in Beijing. It reconstructed more than 17,000 recorded events.\n\nThe break-in came from an American lab's model. The models that refused to help with the cleanup were American too. But the one that did the work came from Beijing.\n\nThis is basically what Nvidia built the alliance around.\n\nThe members are contributing weapons. Nvidia is releasing open model weights, Microsoft is handing over a scanning system that hunts exploitable bugs, and SpaceXAI open sourced its coding agent and says the Grok weights are next.\n\nThen there is the ask:\n\nNvidia's announcement warns policymakers that blanket restrictions on open frontier systems would concentrate power and vulnerability in a few closed providers. Treasury Secretary Scott Bessent has spent the month weighing exactly those restrictions.\n\nKarp was also asked about Sam Altman declaring on Saturday that we are now in the singularity, and whether that scared him. He compared the technology to uranium, said what matters is WHO controls the processing, and pointed out that Silicon Valley keeps presenting all of this as though there is none.\n\nAnd funnily enough he also said: \"We are going to end up having to regulate AI, no doubt.\"\n\nAlthough his own alliance spent Monday telling Washington the opposite.\n\n37 companies are about to argue that open models keep America safe. Three companies will argue that open models are how America loses. \n\nWhat do you think?",
+                "url": "https://x.com/Ric_RTP/status/2082100271228821746",
+                "source": "@Ric_RTP",
+                "date": "Tue Jul 28 13:46:02 +0000 2026",
+                "metrics": {
+                  "favorites": 175,
+                  "retweets": 60,
+                  "views": "24637"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "G09_multi_limit_increase",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": true,
+      "metadata": {
+        "skill": "multi_turn_limit_correction",
+        "difficulty": "easy",
+        "what_it_tests": "User increases limit from 3 → 10. Agent must update the limit arg."
+      },
+      "input": [
+        {
+          "role": "user",
+          "content": "Lấy 3 tweet mới nhất của Sam Altman"
+        },
+        {
+          "role": "assistant",
+          "content": "OK",
+          "tool_calls": [
+            {
+              "name": "timeline",
+              "args": {
+                "screenname": "sama",
+                "limit": 3
+              }
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "content": "Found 3 tweets."
+        },
+        {
+          "role": "user",
+          "content": "Show me 10 instead"
+        }
+      ],
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "timeline",
+            "args": {
+              "screenname": "sama",
+              "limit": 10
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "timeline",
+            "args": {
+              "screenname": "sama",
+              "limit": 10
+            }
+          }
+        ],
+        "actual_text": "",
+        "case_failure_type": "wrong_arg_value",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "timeline",
+          "args": {
+            "screenname": "sama",
+            "limit": 10
+          },
+          "result": {
+            "tool": "get_user_tweets",
+            "screenname": "sama",
+            "items": [
+              {
+                "title": "wrong",
+                "summary": "wrong",
+                "url": "https://x.com/sama/status/2081832600591892712",
+                "source": "@sama",
+                "date": "Mon Jul 27 20:02:25 +0000 2026",
+                "metrics": {
+                  "favorites": 11135,
+                  "retweets": 279,
+                  "views": "2124760"
+                }
+              },
+              {
+                "title": "agreed feels big, i want a new kind of computer",
+                "summary": "agreed feels big, i want a new kind of computer",
+                "url": "https://x.com/sama/status/2081513071135346814",
+                "source": "@sama",
+                "date": "Sun Jul 26 22:52:43 +0000 2026",
+                "metrics": {
+                  "favorites": 8127,
+                  "retweets": 284,
+                  "views": "2391815"
+                }
+              },
+              {
+                "title": "chatgpt work is remarkable, and \"work\" undersells it.",
+                "summary": "chatgpt work is remarkable, and \"work\" undersells it.\n\nfrom my phone i sent:\n\n\"use all my chat history to figure out ideas for a long weekend trip with 8 friends, plan the best three options, make a full-stack site where the 9 of us can coordinate on what we would want to do in each place and decide where to go, and then after we get to group agreement make reservations. draft an email in my gmail i can send out to my friends when the site is ready.\"\n\nit...just worked.",
+                "url": "https://x.com/sama/status/2081396796174282900",
+                "source": "@sama",
+                "date": "Sun Jul 26 15:10:41 +0000 2026",
+                "metrics": {
+                  "favorites": 17408,
+                  "retweets": 573,
+                  "views": "3569623"
+                }
+              },
+              {
+                "title": "RT @gdb: stories like this should be told more",
+                "summary": "RT @gdb: stories like this should be told more",
+                "url": "https://x.com/sama/status/2081030523229728800",
+                "source": "@sama",
+                "date": "Sat Jul 25 14:55:15 +0000 2026",
+                "metrics": {
+                  "favorites": 0,
+                  "retweets": 170,
+                  "views": "44755"
+                }
+              },
+              {
+                "title": "RT @pashmerepat: A billion users can now create and publish websites from their phones with ChatGPT Work. ",
+                "summary": "RT @pashmerepat: A billion users can now create and publish websites from their phones with ChatGPT Work. \n\nBut most people don’t really gr…",
+                "url": "https://x.com/sama/status/2080713767122591863",
+                "source": "@sama",
+                "date": "Fri Jul 24 17:56:34 +0000 2026",
+                "metrics": {
+                  "favorites": 0,
+                  "retweets": 118,
+                  "views": "47733"
+                }
+              },
+              {
+                "title": "i want the US to win in AI both in open source and proprietary models, and i am glad to see this",
+                "summary": "i want the US to win in AI both in open source and proprietary models, and i am glad to see this",
+                "url": "https://x.com/sama/status/2080683363174945065",
+                "source": "@sama",
+                "date": "Fri Jul 24 15:55:45 +0000 2026",
+                "metrics": {
+                  "favorites": 15403,
+                  "retweets": 966,
+                  "views": "3316137"
+                }
+              },
+              {
+                "title": "let us know what you think of pro-ultra-superhard",
+                "summary": "let us know what you think of pro-ultra-superhard",
+                "url": "https://x.com/sama/status/2080683119959757243",
+                "source": "@sama",
+                "date": "Fri Jul 24 15:54:47 +0000 2026",
+                "metrics": {
+                  "favorites": 3959,
+                  "retweets": 107,
+                  "views": "896841"
+                }
+              },
+              {
+                "title": "RT @coreyching: already in bed. couldn’t remember if my laptop was plugged in.",
+                "summary": "RT @coreyching: already in bed. couldn’t remember if my laptop was plugged in.\nasked codex.\ngood night https://t.co/aFB56IHpkI",
+                "url": "https://x.com/sama/status/2080433961843699980",
+                "source": "@sama",
+                "date": "Thu Jul 23 23:24:43 +0000 2026",
+                "metrics": {
+                  "favorites": 0,
+                  "retweets": 97,
+                  "views": "44025"
+                }
+              },
+              {
+                "title": "RT @thekaransinghal: We're rolling out Health in ChatGPT to all U.S. users. ♥️",
+                "summary": "RT @thekaransinghal: We're rolling out Health in ChatGPT to all U.S. users. ♥️\n\nMore than 300 million people come to ChatGPT every week wit…",
+                "url": "https://x.com/sama/status/2080392429484843295",
+                "source": "@sama",
+                "date": "Thu Jul 23 20:39:41 +0000 2026",
+                "metrics": {
+                  "favorites": 0,
+                  "retweets": 58,
+                  "views": "45734"
+                }
+              },
+              {
+                "title": "RT @OpenAI: ChatGPT Voice is now in the desktop app.",
+                "summary": "RT @OpenAI: ChatGPT Voice is now in the desktop app.\n\nControl your computer and direct multiple agents running  in ChatGPT Work or Codex, u…",
+                "url": "https://x.com/sama/status/2080392072297947281",
+                "source": "@sama",
+                "date": "Thu Jul 23 20:38:16 +0000 2026",
+                "metrics": {
+                  "favorites": 0,
+                  "retweets": 1383,
+                  "views": "29440"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "G10_multi_out_of_scope_recovery",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": true,
+      "metadata": {
+        "skill": "multi_turn_scope_recovery",
+        "difficulty": "hard",
+        "what_it_tests": "Agent correctly refused coding → user pivots to a valid research request → agent should now call lookup."
+      },
+      "input": [
+        {
+          "role": "user",
+          "content": "Write a Python function to reverse a string"
+        },
+        {
+          "role": "assistant",
+          "content": "OK",
+          "tool_calls": [
+            {
+              "name": "clarify",
+              "args": {
+                "question": "I'm a research assistant — I can search web, read URLs, check social media, and format results. I cannot help with coding."
+              }
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "content": "User acknowledged."
+        },
+        {
+          "role": "user",
+          "content": "OK, then search for articles about Python string manipulation"
+        }
+      ],
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "lookup",
+            "args": {
+              "query": "Python string manipulation"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "lookup",
+            "args": {
+              "query": "Python string manipulation",
+              "topic": "general",
+              "timeframe": "month",
+              "max_results": 5
+            }
+          }
+        ],
+        "actual_text": "",
+        "case_failure_type": "wrong_tool",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "lookup",
+          "args": {
+            "query": "Python string manipulation",
+            "topic": "general",
+            "timeframe": "month",
+            "max_results": 5
+          },
+          "result": {
+            "tool": "web_search",
+            "query": "Python string manipulation",
+            "topic": "general",
+            "timeframe": "month",
+            "items": [
+              {
+                "title": "Guide to String Manipulation in Python",
+                "url": "https://www.mygreatlearning.com/blog/python-string-manipulation",
+                "source": "mygreatlearning.com",
+                "summary": "String manipulation in Python involves modifying, analyzing, or processing string data types. A Python string is an ordered, immutable sequence of characters enclosed in single quotes (' '), double quotes (\" \"), or triple quotes (\"\"\" \"\"\"). For example, \"hello world\" is a string.\n\nYou’ll use string manipulation in many areas:\n\nMastering string manipulation helps you handle text efficiently. This makes your code more robust and adaptable.\n\nPython Programming Course [...] great learning\ngreat learning\ngreat learning\ngreat learning\n\n# Guide to String Manipulation in Python\n\nString modification or manipulation in Python helps you work with text data. It lets you create, change, and manage strings effectively. You can use this to save time and write better code.\n\nString Manipulation in Python\nString Manipulation in Python\n\n## What is String Manipulation in Python? [...] Strings are immutable in Python. This means you cannot change them directly after creation. However, you can create new strings based on existing ones using various methods.\n\n#### Changing Case\n\nYou can change the case of characters in a string.\n\n`lower()`\n`upper()`\n`capitalize()`\n`title()`\n\n#### Replacing Substrings\n\nThe `replace()` method replaces all occurrences of a substring with another.\n\n`replace()`\n\n#### Stripping Whitespace",
+                "score": 0.94761914
+              },
+              {
+                "title": "Python string manipulation | Working of String manipulation with example",
+                "url": "https://www.educba.com/python-string-manipulation",
+                "source": "educba.com",
+                "summary": "In Python, the string is declared using either single or double quotes, which it defines as a sequence of characters. String manipulation is a process of manipulating the string, such as slicing, parsing, analyzing, etc. In many different programming languages, including Python, provides string data type to work with such string manipulating, which uses different functions of the string provided by string data type “str” in Python. In Python, the string data type is used for representing [...] In this article, we can conclude that string manipulation in Python is defined as a process of manipulating string using processes like parsing, slicing, indexing, etc. In this article, we saw string manipulation is done using string operators, functions, and methods provided by Python. Therefore we saw few string operators, string functions, and string methods are described with examples. We also saw string indexing and string slicing concepts with examples for string manipulation. [...] In Python, string class “str” provides various methods for string manipulation where almost every application uses string in their application. In Python, strings are either declared using single or double quotes, unlike other programming languages that require data types to declare any other type. In Python, some built-in string methods are used for string manipulation. In Python, there are operators, functions, and methods which are used in string manipulation. Let us see one by one in the",
+                "score": 0.9437689
+              },
+              {
+                "title": "Python String Manipulation: Techniques and Functions",
+                "url": "https://intellipaat.com/blog/python-string-manipulation",
+                "source": "intellipaat.com",
+                "summary": "Table of Contents:\n\n## What is String Manipulation in Python?\n\nPython string manipulation is the process of modifying and working with strings. This can include:\n\nquiz-icon\nquiz-icon\n\n## Different Ways to Manipulate Strings in Python\n\nPython provides many ways to manipulate strings. Some common ways are:\n\n### 1. Creating and Accessing Strings in Python\n\nCreating a string in Python is very simple. Just place the text inside single or double quotes.\n\nExample:\n\nOutput: [...] Python has many built-in functions and a simple syntax that make string manipulation easy and powerful. It provides all the tools needed to manipulate text, whether accessing characters, concatenating strings, modifying case, cleaning user inputs, or using f-strings. Mastering these Python String Manipulation techniques enables you to write cleaner, more effective code and solve real-world problems with less effort. With regular practice, working with strings in Python becomes simple and [...] Python is the most popular programming language, as it is easy to use and learn. One of its important and useful features is its ability to work with strings. Strings are sequences of characters, which can include letters, words, or symbols. String manipulation involves changing, combining, or utilizing strings in various ways, which help to achieve the desired result. In this blog, you will understand Python string manipulation and different ways to manipulate strings with examples in detail",
+                "score": 0.9393874
+              },
+              {
+                "title": "String Manipulation in Python - Avid Python",
+                "url": "https://avidpython.com/python-basics/string-manipulation-in-python",
+                "source": "avidpython.com",
+                "summary": "## String Manipulation in Python. ## Store a String in Python. ## Print a String in Python. You can manipulate strings in python by joining two strings or by splitting them. ## Split a String in Python. After execution, the split() method splits the input string at each instance where the separator is present and returns a python list containing all the substrings of the input string. Hence, the input string on which the split() method is invoked is split at the space character. ### Use Delimiters to Split a String in Python at a Given Character. Another way you can use string manipulation in python is by splitting the string using the `partition()` function. ## Use Arithmetic Operators on a String in Python. You can change the capitalization of a string by using various string manipulation functions in Python. When invoked on a string, the find() method takes a character or substring as its input argument. ## String Manipulation in Python With Characters and White Spaces. You can add or remove white space and characters to a string with string manipulation in python. To add white space at the beginning of a string, you can use the `rjust()` python function, which right adjusts the given string with the character of your choice. To add whitespace to a string in python, you can pass the whitespace character to `rjust()` method as its second input argument. ## String Manipulation in Python With Format Specifiers. You can use Python’s `format()` function, `f-strings`, and `%` operator to manipulate strings in python. ### Manipulate String in Python Using The % Operator. ### Manipulate Strings in Python Using the Format() Function. To use the `format()` function to manipulate string in Python, we use curly braces`{}` as placeholders for specifying the variable’s position. Then we use the `format()` function to specify the variables that we want to place inside the string as shown below. ### Manipulate Strings in Python by Using Positional Arguments. ### Manipulate String in Python Using Keyword Arguments. ### Use f-String to Manipulate String in Python. After going through the article, you will be able to easily manipulate strings in python, and use manipulation techniques to change formatting or insert variables.",
+                "score": 0.9197076
+              },
+              {
+                "title": "String Manipulation In Python",
+                "url": "https://pythontimes.com/string-manipulation-in-python",
+                "source": "pythontimes.com",
+                "summary": "This guide scraped the surface of what’s possible with string manipulation in Python. But even so, getting a handle on these basics will help you greatly as you further your Python journey. Whether you’re building a full-fledged application or writing a quick script, knowing how to manipulate strings effectively, is a game-changer. Python’s focus on readability and simplicity makes string manipulation surprisingly easy and satisfying. It’s one more reason to love Python programming. [...] Python also provides various inbuilt methods to manipulate strings effectively. Let’s uncover some of these.\n\n### `len()`\n\nThe `len()` function calculates a string’s length.\n\n```\nstr1 = 'Hello, World!' print(len(str1)) # Output: 13 \n```\n\n### `split()`\n\nThe `split()` method separates a string into a list of substrings. By default, it splits at each space.\n\n```\nstr1 = 'Hello, World!' print(str1.split()) # Output: ['Hello,', 'World!'] \n```\n\n### `join()` [...] String Manipulation In Python\n\nString Manipulation In Python\n\n## What is a string?\n\nIn Python, a string is a sequence of one or more characters (letters, numbers, symbols) contained within a pair of ‘single quotes’ or “double quotes”. Python treats both types of quotes as the same. You can use either kind depending on your preference.\n\n```\n# String examples str1 = 'Hello, World!' str2 = \"Python is fun.\" \n```\n\n## Basic String Operations\n\n### Concatenation",
+                "score": 0.8914433
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
